@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "server": "npm run server --prefix backend",
+    "client": "npm run start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "dependencies": {
+    "concurrently": "^7.1.0",
+    "jspdf": "^2.5.1"
+  }
+}

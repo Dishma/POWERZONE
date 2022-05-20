@@ -243,7 +243,7 @@ export default class MemberList extends Component {
         <br></br>
 
         <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal" style={{ marginLeft: '250px' }}>
-          Add New Member
+          <i class="fa-solid fa-plus">&nbsp;&nbsp;</i>Add New Member
         </button>
 
         <div style={{ margin: '30px 250px 0px 250px' }}>

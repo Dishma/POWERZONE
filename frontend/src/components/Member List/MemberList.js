@@ -44,6 +44,7 @@ export default class MemberList extends Component {
     let weightError = "";
     let heightError = "";
     let joinedDateError = "";
+    let otherDetailsError = "";
 
     if (!this.state.memberName) {
       memberNameError = 'This field is required!';
@@ -69,9 +70,12 @@ export default class MemberList extends Component {
     if (!this.state.joiningDate) {
       joinedDateError = 'This field is required!';
     }
+    if (!this.state.otherDetails) {
+      otherDetailsError = 'This field is required!';
+    }
 
-    if (memberNameError || addressError || emailError || phoneNumberError || genderError || weightError || heightError || joinedDateError) {
-      this.setState({ memberNameError, addressError, emailError, phoneNumberError, genderError, weightError, heightError, joinedDateError });
+    if (memberNameError || addressError || emailError || phoneNumberError || genderError || weightError || heightError || joinedDateError || otherDetailsError) {
+      this.setState({ memberNameError, addressError, emailError, phoneNumberError, genderError, weightError, heightError, joinedDateError, otherDetailsError });
       return false;
     }
 
@@ -342,6 +346,10 @@ export default class MemberList extends Component {
                   <div className='form-group' style={{ marginBottom: '15px' }}>
                     <label style={{ marginBottom: '5px' }}>Other Details</label>
                     <textarea type="text" className='form-control' name='otherDetails' value={this.state.otherDetails} onChange={this.handleInputChange}></textarea>
+
+                    <div style={{ fontSize: 12, color: 'red' }}>
+                      {this.state.otherDetailsError}
+                    </div>
                   </div>
 
                 </form>

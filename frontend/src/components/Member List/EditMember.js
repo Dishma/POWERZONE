@@ -67,6 +67,7 @@ export default class EditMember extends Component {
     return true;
   };
 
+  //Edit
   onSubmit = (e) => {
     e.preventDefault();
 

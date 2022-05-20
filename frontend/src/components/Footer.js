@@ -4,9 +4,6 @@ function Footer() {
     return (
 
         <footer class="text-center text-white" style={{ backgroundColor: '#f1f1f1' }}>
-
-
-
             <div>
 
                 <section>
@@ -54,9 +51,8 @@ function Footer() {
                 </section>
             </div>
 
-            <div class="text-center text-dark p-3" style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
-                © 2022 Copyright   :
-                <a class="text-dark" href="/">      POWERZONE</a>
+            <div class="text-center text-dark p-3" style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)', fontFamily: 'Sans-serif' }}>
+                © 2022 Copyright - <b>POWERZONE</b>
             </div>
 
 

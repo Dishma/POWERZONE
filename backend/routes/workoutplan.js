@@ -67,15 +67,15 @@ router.put('/workoutplan/update/:id', (req, res) => {
     );
 });
 
-//delete workoutplan
+//Delete WorkoutPlan
 router.delete('/workoutplan/delete/:id', (req, res) => {
-    WorkoutPlans.findByIdAndRemove(req.params.id).exec((err, deletedWorkoutPlan) => {
+    WorkoutPlans.findByIdAndRemove(req.params.id).exec((err, deletedworkoutplan) => {
         if (err) return res.status(400).json({
             message: "Delete unsuccessful", err
         });
 
         return res.json({
-            message: "Delete Successfull", deletedWorkoutPlan
+            message: "Delete Successfull", deletedworkoutplan
         });
     });
 });

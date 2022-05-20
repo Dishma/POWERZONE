@@ -1,0 +1,23 @@
+.navb ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+.navb li {
+  float: left;
+}
+
+.navb li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 10px 18px;
+  text-decoration: none;
+}
+
+.navb li a:hover:not(.active) {
+  background-color: rgb(158, 119, 119);
+}

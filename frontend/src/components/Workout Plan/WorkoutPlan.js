@@ -30,7 +30,7 @@ export default class WorkoutPlan extends Component {
   //Delete Button
   onDelete = (id) => {
     axios.delete(`/workoutplan/delete/${id}`).then((res) => {
-      alert("Deleted Successfully.")
+      alert("Deleted Successfully.");
       this.retrieveWorkoutPlans();
     });
   }
@@ -90,12 +90,15 @@ export default class WorkoutPlan extends Component {
               price: "",
               duration: ""
             }
-          )
+          );
+
+          window.location.href = '/workoutplans';
         }
       });
     }
   }
 
+  // Validation
   validate = () => {
 
     let planNameError = "";
@@ -105,13 +108,13 @@ export default class WorkoutPlan extends Component {
 
 
     if (!this.state.planName) {
-      planNameError = 'This field cannot be Empty!';
+      planNameError = 'This field is required!';
     }
     if (!this.state.price) {
-      priceError = 'This field cannot be Empty!';
+      priceError = 'This field is required!';
     }
     if (!this.state.duration) {
-      durationError = 'This field cannot be Empty!';
+      durationError = 'This field is required!';
     }
 
 
@@ -131,144 +134,144 @@ export default class WorkoutPlan extends Component {
 
     const unit = "pt";
     const size = "A4"; //page size
-    const orientation = "landscape";
+    const orientation = "portrait";
     const doc = new jsPDF(orientation, unit, size); //create document
     const title = `| POWERZONE | `;
 
-    const planNames = `Plan Name: ${planName} `;
-    const prices = `Price (Rs.): ${price} `;
-    const durations = `Duration (Months): ${duration} `;
+    const planNames = `Plan Name:  ${planName} `;
+    const prices = `Price:  Rs.${price}.00 `;
+    const durations = `Duration:  ${duration} Months `;
 
 
     const image = "https://res.cloudinary.com/dnonvyjrq/image/upload/v1651654099/gym_logo_vndrpz.jpg";
 
-    const left = 30;
-    const top = 8;
-    const imgWidth = 100;
-    const imgHeight = 100;
+    const left = 50;
+    const top = 50;
+    const imgWidth = 75;
+    const imgHeight = 75;
 
-    doc.setFontSize(20);
+    doc.setFontSize(15);
 
-    doc.text(150, 40, title);
+    doc.text(150, 93, title);
 
-    doc.text(60, 200, planNames);
-    doc.text(60, 250, prices);
-    doc.text(60, 300, durations);
+    doc.text(50, 200, planNames);
+    doc.text(50, 240, prices);
+    doc.text(50, 280, durations);
 
     doc.addImage(image, 'PNG', left, top, imgWidth, imgHeight);
 
-    doc.save(`WorkoutPlan ${planName}.pdf`)
+    doc.save(`WorkoutPlan-${planName}.pdf`)
   }
 
   render() {
     return (
-      <div className='bg1'>
-        <div className='container' style={{ paddingBottom: '300px' }}>
+      <div className='container' style={{ marginBottom: '70px', marginTop: '20px' }}>
 
-          <div className='row'>
-            <div className='col-lg-9 mt-2 mb-2'>
-              <h4>Workout Plans</h4>
-            </div>
-
-            <div className='col-lg-3 mt-2 mb-2'>
-              <input className='form-control' type='search' placeholder='Search' name='searchQuery' onChange={this.handleSearchArea}></input>
-            </div>
+        <div className='row'>
+          <div className='col-lg-9 mt-2 mb-2'>
+            <h4>Workout Plans</h4>
           </div>
 
-          <table className='table table-hover' style={{ marginTop: '40px' }}>
-            <thead>
-              <tr>
-                <th scope='col'>#</th>
-                <th scope='col'>Plan Name</th>
-                <th scope='col'>Price (Rs.)</th>
-                <th scope='col'>Duration (Months)</th>
-                <th scope='col'>Action</th>
-              </tr>
-            </thead>
+          <div className='col-lg-3 mt-2 mb-2'>
+            <input className='form-control' type='search' placeholder='Search' name='searchQuery' onChange={this.handleSearchArea}></input>
+          </div>
+        </div>
 
-            <tbody>
-              {this.state.workoutplans.map((workoutplans, index) => (
-                <tr key={index}>
-                  <th scope='row'>{index + 1}</th>
-                  <td>{workoutplans.planName}</td>
-                  <td>{workoutplans.price}</td>
-                  <td>{workoutplans.duration}</td>
-                  <td>
-                    <a className='btn btn-warning' href={`/editworkoutplan/${workoutplans._id}`}>
-                      <i className='fas fa-edit'></i>&nbsp;Edit
-                    </a>
-                    &nbsp;
+        <table className='table table-hover' style={{ marginTop: '40px' }}>
+          <thead>
+            <tr>
+              <th scope='col'>#</th>
+              <th scope='col'>Plan Name</th>
+              <th scope='col'>Price</th>
+              <th scope='col'>Duration</th>
+              <th scope='col'>Action</th>
+            </tr>
+          </thead>
 
-                    <a className='btn btn-danger' href="" onClick={() => this.onDelete(workoutplans._id)}>
-                      <i className='far fa-trash-alt'></i>&nbsp;Delete
-                    </a>
-                    &nbsp;
+          <tbody>
+            {this.state.workoutplans.map((workoutplans, index) => (
+              <tr key={index}>
+                <th scope='row'>{index + 1}</th>
+                <td>{workoutplans.planName}</td>
+                <td>Rs.{workoutplans.price}.00</td>
+                <td>{workoutplans.duration} Months</td>
+                <td>
+                  <a className='btn btn-warning' href={`/editworkoutplan/${workoutplans._id}`}>
+                    <i className='fas fa-edit'></i>&nbsp;Edit
+                  </a>
+                  &nbsp;&nbsp;
 
-                    <button className="btn btn-info" onClick={() => this.createPDF(workoutplans.planName, workoutplans.price, workoutplans.duration)} >
-                      <i class="fa-solid fa-file-pdf"></i>&nbsp;Generate PDF
-                    </button>
+                  <button type="button" class="btn btn-danger" onClick={() => this.onDelete(workoutplans._id)}>
+                    <i className='far fa-trash-alt'></i>&nbsp;Delete
+                  </button>&nbsp;&nbsp;
 
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-
-          </table>
-
-
-
-          <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal"><i className='far fa-check-square'></i>&nbsp;Add New Plan</button>
-
-          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content">
-
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Add New Plan</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-
-                <div class="modal-body">
-
-                  <form className='needs-validation' noValidate>
-                    <div className='form-group' style={{ marginBottom: '15px' }}>
-                      <label style={{ marginBottom: '5px' }}>Plan Name</label>
-                      <input type='text' className='form-control' name='planName' placeholder='Enter Plan Name' value={this.state.planName} onChange={this.handleInputChange}></input>
-
-                      <div style={{ fontSize: 12, color: 'red' }}>
-                        {this.state.planNameError}
-                      </div>
-                    </div>
-
-                    <div className='form-group' style={{ marginBottom: '15px' }}>
-                      <label style={{ marginBottom: '5px' }}>Price (Rs.)</label>
-                      <input type="text" className='form-control' name='price' placeholder='Enter Price' value={this.state.price} onChange={this.handleInputChange}></input>
-
-                      <div style={{ fontSize: 12, color: 'red' }}>
-                        {this.state.priceError}
-                      </div>
-                    </div>
-
-                    <div className='form-group' style={{ marginBottom: '15px' }}>
-                      <label style={{ marginBottom: '5px' }}>Duration (Months)</label>
-                      <input type="text" className='form-control' name='duration' placeholder='Enter Duration' value={this.state.duration} onChange={this.handleInputChange}></input>
-
-                      <div style={{ fontSize: 12, color: 'red' }}>
-                        {this.state.durationError}
-                      </div>
-                    </div>
-                  </form>
-
-                </div>
-
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button className='btn btn-success' type='submit' onClick={this.onSubmit}>
-                    Add
+                  <button class="btn btn-outline-info" onClick={() => this.createPDF(workoutplans.planName, workoutplans.price, workoutplans.duration)} >
+                    <i class="fa-solid fa-file-pdf"></i>&nbsp;Get Report
                   </button>
-                </div>
+
+                </td>
+              </tr>
+            ))}
+          </tbody>
+
+        </table>
+
+
+        {/* Add New Plan */}
+        <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#addplan"><i className='far fa-check-square'></i>&nbsp;Add New Plan</button>
+
+        <div class="modal fade" id="addplan" tabindex="-1" aria-labelledby="addplanLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+              <div class="modal-header">
+                <h5 class="modal-title" id="addplanLabel">Add New Plan</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+
+              <div class="modal-body">
+
+                <form className='needs-validation' noValidate>
+                  <div className='form-group' style={{ marginBottom: '15px' }}>
+                    <label style={{ marginBottom: '5px' }}>Plan Name</label>
+                    <input type='text' className='form-control' name='planName' placeholder='Enter Plan Name' value={this.state.planName} onChange={this.handleInputChange}></input>
+
+                    <div style={{ fontSize: 12, color: 'red' }}>
+                      {this.state.planNameError}
+                    </div>
+                  </div>
+
+                  <div className='form-group' style={{ marginBottom: '15px' }}>
+                    <label style={{ marginBottom: '5px' }}>Price (Rs.)</label>
+                    <div class="input-group">
+                      <input type="text" className='form-control' name='price' placeholder='Enter Price' value={this.state.price} onChange={this.handleInputChange}></input>
+                      <div class="input-group-append">
+                        <span class="input-group-text">.00</span>
+                      </div>
+                    </div>
+
+                    <div style={{ fontSize: 12, color: 'red' }}>
+                      {this.state.priceError}
+                    </div>
+                  </div>
+
+                  <div className='form-group' style={{ marginBottom: '15px' }}>
+                    <label style={{ marginBottom: '5px' }}>Duration (Months)</label>
+                    <input type="number" className='form-control' name='duration' placeholder='Enter Duration' value={this.state.duration} onChange={this.handleInputChange}></input>
+
+                    <div style={{ fontSize: 12, color: 'red' }}>
+                      {this.state.durationError}
+                    </div>
+                  </div>
+                </form>
 
               </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                <button className='btn btn-success' type='submit' onClick={this.onSubmit}>Add</button>
+              </div>
+
             </div>
           </div>
         </div>

@@ -25,10 +25,10 @@ export default class PostMember extends Component {
 
   render() {
 
-    const {memberName, address, email, phoneNumber, gender, weight, height, joiningDate, otherDetails} = this.state.member;
+    const { memberName, address, email, phoneNumber, gender, weight, height, joiningDate, otherDetails } = this.state.member;
 
     return (
-      <div className='container'>
+      <div className='container' style={{ marginBottom: '50px' }}>
         <div className='main'>
           <div style={{ marginTop: '20px' }}>
             <h4>{memberName}</h4>
@@ -52,7 +52,7 @@ export default class PostMember extends Component {
 
               <dt className='col-sm-3'>Phone Number: </dt>
               <div className='col-sm-9'>
-                <p className='font-weight-normal'>{phoneNumber}</p>
+                <p className='font-weight-normal'>+94 {phoneNumber}</p>
               </div>
 
               <dt className='col-sm-3'>Gender: </dt>
@@ -62,12 +62,12 @@ export default class PostMember extends Component {
 
               <dt className='col-sm-3'>Weight: </dt>
               <div className='col-sm-9'>
-                <p className='font-weight-normal'>{weight}</p>
+                <p className='font-weight-normal'>{weight}kg</p>
               </div>
 
               <dt className='col-sm-3'>Height: </dt>
               <div className='col-sm-9'>
-                <p className='font-weight-normal'>{height}</p>
+                <p className='font-weight-normal'>{height}cm</p>
               </div>
 
               <dt className='col-sm-3'>Joined Date: </dt>
@@ -79,8 +79,9 @@ export default class PostMember extends Component {
               <div className='col-sm-9'>
                 <p className='font-weight-normal'>{otherDetails}</p>
               </div>
-
             </dl>
+
+            <a href='/memberlist'><button type='button' class="btn btn-outline-success" style={{ marginTop: '15px' }}><i class="fa-solid fa-angle-left"></i>&nbsp;Back</button></a>
           </div>
         </div>
       </div>

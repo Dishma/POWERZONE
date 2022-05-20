@@ -1,4 +1,5 @@
 import React from "react";
+import "../styles/css/styles.css";
 
 
 function Adminhome() {
@@ -12,7 +13,7 @@ function Adminhome() {
                 <br />
 
 
-                <div className="container"><h1 className="text-start">Admin Home Page</h1></div>
+                <div className="container" style={{color:'white'}}><h1 className="text-start">Admin Home Page</h1></div>
 
 
                 <br />

@@ -1,0 +1,145 @@
+.driverHome {
+
+  background-image: url(https://res.cloudinary.com/dnonvyjrq/image/upload/v1652012794/pexels-scott-webb-136404_cgfnte.jpg);
+  background-size: cover;
+  font-family: 'Verdana', serif;
+  width: cover;
+}
+
+.adminhome {
+
+  background-image: url(https://res.cloudinary.com/dnonvyjrq/image/upload/v1651949436/pexels-j%C3%A9shoots-218863_ham6bz.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 900px;
+}
+
+.createdriver {
+
+  background-image: url(https://res.cloudinary.com/dnonvyjrq/image/upload/v1652012384/pexels-lukas-669577_yesrbf.jpg);
+  background-size: cover;
+  font-family: 'Verdana', serif;
+  width: cover;
+}
+
+.editdriver {
+  background-image: url(https://res.cloudinary.com/dnonvyjrq/image/upload/v1652012384/pexels-lukas-669577_yesrbf.jpg);
+  background-size: cover;
+  font-family: monospace;
+  width: cover;
+  font-family: 'Verdana', serif;
+}
+
+
+/* adminhome button */
+.button-87 {
+  margin: 10px;
+  padding: 15px 30px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  border-radius: 10px;
+  display: block;
+  border: 0px;
+  font-weight: 700;
+  box-shadow: 0px 0px 14px -7px #ffffff;
+  background-image: linear-gradient(45deg, #000000 0%, #6c5cff 51%, #FF512F 100%);
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-87:hover {
+  background-position: right center;
+  color: #fff;
+  text-decoration: none;
+}
+
+.button-87:active {
+  transform: scale(0.95);
+}
+
+.button-85 {
+  font-size: small;
+  margin: 5px 10px 8px 0px;
+  padding: 5px 10px;
+  text-align: center;
+  text-transform: capitalize;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  border-radius: 8px;
+  display: block;
+  font-weight: 600;
+  background-image: linear-gradient(45deg, #000000 0%, #6c5cff 51%, #FF512F 100%);
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-85:hover {
+  background-position: right center;
+  color: #fff;
+  text-decoration: none;
+}
+
+.button-85:active {
+  transform: scale(0.95);
+}
+
+/*hover*/
+.adminbutton2:hover {
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.getstartbutton {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 10px;
+  width: 220px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.getstartbutton span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.getstartbutton span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.getstartbutton:hover span {
+  padding-right: 25px;
+}
+
+.getstartbutton:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+a:link,
+a:visited {
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}

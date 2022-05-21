@@ -1,0 +1,43 @@
+.login {
+    margin-left: 400px;
+    margin-right: 400px;
+    margin-top: 20px;
+    margin-bottom: 60px;
+}
+
+.login form {
+    padding: 10px 10px 20px 10px;
+}
+
+.login h2 {
+    text-align: center;
+}
+
+.login button {
+    margin-left: 145%;
+    text-transform: capitalize;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    border-color: white;
+    border-radius: 8px;
+    display: block;
+    background-image: linear-gradient(45deg, #000000 0%, #6c5cff 51%, #FF512F 100%);
+    touch-action: manipulation;
+}
+
+.login button:hover {
+    background-position: right center;
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .login button:active {
+    transform: scale(0.95);
+  }
+
+.login .q2 {
+    padding: 30px;
+    background-image: linear-gradient(45deg, #4c4c58 0%, #c4d9f5 51%, #797981 100%);
+    border-radius: 4%;
+}

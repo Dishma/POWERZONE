@@ -5,6 +5,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Navbar from './components/navbar';
+import Login from './components/Login';
 
 import MemberList from './components/Member List/MemberList';
 import EditMember from './components/Member List/EditMember';
@@ -37,6 +38,10 @@ export default class App extends Component {
       <BrowserRouter>
 
         {/*Chamod*/}
+        <Route path="/login" component={Header}></Route>
+        <Route path="/login" component={Login}></Route>
+        <Route path="/login" component={Footer}></Route>
+
         <Route path="/memberlist" component={Header}></Route>
         <Route path="/memberlist" component={Navbar}></Route>
         <Route path="/memberlist" component={MemberList}></Route>

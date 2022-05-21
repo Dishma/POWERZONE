@@ -17,7 +17,7 @@ function Getstart() {
           <div class="carousel-caption d-none d-md-block">
             <h5>“Your health account, your bank account, they’re the same thing. The more you put in, the more you can take out.”</h5>
             <p>-Jack LaLanne</p>
-            <a role="button" className="getstartbutton adminbutton2" href="/adminhome"><span>Get Started</span></a>
+            <a role="button" className="getstartbutton adminbutton2" href="/login"><span>Get Started</span></a>
             <br />
             <br />
             <br />

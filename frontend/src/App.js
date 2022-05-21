@@ -24,7 +24,6 @@ import Homedriver from "./components/Homedriver";
 import Adminhome from "./components/Adminhome";
 
 //Kavindu
-
 import Topnav from './components/Topnav';
 import AllSupplements from "./components/AllSupplements";
 import AddSupplement from "./components/AddSupplement";
@@ -61,7 +60,6 @@ export default class App extends Component {
         <Route path="/editworkoutplan" component={Footer}></Route>
 
         {/* Kavindu */}
-
         <Route path="/allsupplements" component={Header}></Route>
         <Route path="/allsupplements" component={Topnav}></Route>
         <Route path="/allsupplements" component={AllSupplements}></Route>

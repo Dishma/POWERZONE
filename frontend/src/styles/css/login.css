@@ -2,7 +2,7 @@
     background-image: url('https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?ixlib=rb-1.2.1&raw_url=true&q=80&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471');
 }
 .login-clean {
-    padding: 55px 0px 70px 0px;
+    padding: 45px 0px 55px 0px;
 }
 
 .login-clean form {
@@ -28,7 +28,7 @@
 
 .btnn {
     width: 80%;
-    margin-left: 65px;
+    margin-left: 25px;
     cursor: pointer;
     margin-bottom: 10px;
 }

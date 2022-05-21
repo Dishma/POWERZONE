@@ -8,7 +8,7 @@ const app = express();
 //import routes
 const memberRoutes = require('./routes/members');
 const workoutplanRoutes = require('./routes/workoutplan');
-
+const supplementRoutes = require('./routes/supplements');
 const driverRoutes = require('./routes/driver.js');
 
 //app middleware
@@ -18,7 +18,7 @@ app.use(cors());
 //route middleware
 app.use(memberRoutes);
 app.use(workoutplanRoutes);
-
+app.use(supplementRoutes);
 app.use(driverRoutes);
 
 const PORT = 8000;

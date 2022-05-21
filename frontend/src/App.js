@@ -23,6 +23,13 @@ import Homedriver from "./components/Homedriver";
 
 import Adminhome from "./components/Adminhome";
 
+//Kavindu
+
+import Topnav from './components/Topnav';
+import AllSupplements from "./components/AllSupplements";
+import AddSupplement from "./components/AddSupplement";
+import EditSupplement from "./components/EditSupplement";
+
 
 
 export default class App extends Component {
@@ -53,7 +60,12 @@ export default class App extends Component {
         <Route path="/editworkoutplan/:id" component={EditPlan}></Route>
         <Route path="/editworkoutplan" component={Footer}></Route>
 
+        {/* Kavindu */}
 
+        <Route path="/allsupplements" component={Header}></Route>
+        <Route path="/allsupplements" component={Topnav}></Route>
+        <Route path="/allsupplements" component={AllSupplements}></Route>
+        <Route path="/allsupplements" component={Footer}/>        
         
         {/*Dishma*/}
         <main className="page-body-content">
@@ -73,6 +85,8 @@ export default class App extends Component {
           <Route path="/adminhome" component={Adminhome}></Route>
           <Route path="/adminhome" component={Footer} />
         </main>
+
+        
 
       </BrowserRouter>
     )

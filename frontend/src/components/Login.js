@@ -5,37 +5,36 @@ export default class
     extends Component {
     render() {
         return (
-            <div className='loginbody'>
-                <div className='container'>
-                    <div className='login'>
-                        <div class="q1">
-                            <div class="bg-light text-dark border q2">
-                                <h2>Admin Login</h2>
+            <div className='gymbody'>
+                <div className="login-clean">
+                    <form>
 
-                                <hr></hr>
-                                <br></br>
+                        <h2>Admin Login</h2>
 
-                                <form>
-                                    <div className='form-group'>
-                                        <label>Username</label>
-                                        <input className='form-control' placeholder='Enter Username'></input>
-                                    </div>
+                        <hr></hr>
+                        <br></br>
 
-                                    <br></br>
-
-                                    <div className='form-group'>
-                                        <label>Password</label>
-                                        <input className='form-control' placeholder='Enter Password'></input>
-                                    </div>
-                                </form>
-
-                                <br></br>
-                                <hr></hr>
-
-                                <a href='/adminhome'><button type="submit" className='btn btn-primary'>Login</button></a>
-                            </div>
+                        <div className="illustration">
+                            <i className="icon ion-ios-navigate"></i>
                         </div>
-                    </div>
+
+                        <div className="form-group">
+                            <input className="form-control" placeholder="Username" />
+                        </div>
+
+                        <br></br>
+
+                        <div className="form-group">
+                            <input className="form-control" placeholder="Password" />
+                        </div>
+
+                        <br></br>
+
+                        <div className="form-group">
+                            <a href='/adminhome'><button className="btn btn-dark btnn" type="button">Login</button></a>
+                        </div>
+
+                    </form>
                 </div>
             </div>
         )

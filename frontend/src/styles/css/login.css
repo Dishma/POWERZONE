@@ -1,43 +1,38 @@
-.login {
-    margin-left: 400px;
-    margin-right: 400px;
-    margin-top: 20px;
-    margin-bottom: 60px;
+.gymbody {
+    background-image: url('https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?ixlib=rb-1.2.1&raw_url=true&q=80&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471');
+}
+.login-clean {
+    padding: 55px 0px 70px 0px;
 }
 
-.login form {
-    padding: 10px 10px 20px 10px;
+.login-clean form {
+    max-width: 320px;
+    width: 90%;
+    margin: 0 auto;
+    background-color: #dddddd;
+    padding: 40px;
+    border-radius: 4px;
+    color: #000000;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
 }
 
-.login h2 {
+.login-clean form .form-control {
+    background: #f7f9fc;
+    border-bottom: 1px solid #dfe7f1;
+    border-radius: 10;
+    outline: none;
+    color: inherit;
+    text-indent: 8px;
+    height: 42px;
+}
+
+.btnn {
+    width: 80%;
+    margin-left: 65px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.login-clean h2 {
     text-align: center;
-}
-
-.login button {
-    margin-left: 145%;
-    text-transform: capitalize;
-    transition: 0.5s;
-    background-size: 200% auto;
-    color: white;
-    border-color: white;
-    border-radius: 8px;
-    display: block;
-    background-image: linear-gradient(45deg, #000000 0%, #6c5cff 51%, #FF512F 100%);
-    touch-action: manipulation;
-}
-
-.login button:hover {
-    background-position: right center;
-    color: #fff;
-    text-decoration: none;
-  }
-  
-  .login button:active {
-    transform: scale(0.95);
-  }
-
-.login .q2 {
-    padding: 30px;
-    background-image: linear-gradient(45deg, #4c4c58 0%, #c4d9f5 51%, #797981 100%);
-    border-radius: 4%;
 }

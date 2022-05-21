@@ -257,7 +257,7 @@ export default class WorkoutPlan extends Component {
 
                   <div className='form-group' style={{ marginBottom: '15px' }}>
                     <label style={{ marginBottom: '5px' }}>Duration (Months)</label>
-                    <input type="number" className='form-control' name='duration' placeholder='Enter Duration' value={this.state.duration} onChange={this.handleInputChange}></input>
+                    <input type="number" className='form-control' min='1' name='duration' placeholder='Enter Duration' value={this.state.duration} onChange={this.handleInputChange}></input>
 
                     <div style={{ fontSize: 12, color: 'red' }}>
                       {this.state.durationError}

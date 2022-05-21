@@ -1,4 +1,4 @@
-# POWERZONE
+# POWERZONE - Gym Management System
 
 **Team Members :-**
 

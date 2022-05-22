@@ -18,19 +18,15 @@ router.post('/supplement/add', (req, res) => {
 });
 
 //Get Supplement
-router.get('/supplement', (req, res) => {
-    Supplement.find().exec((err, supplement) => {
-        if (err) {
-            return res.status(400).json({
-                error: err
-            });
-        }
-        return res.status(200).json({
-            success: true,
-            existingSupplements: supplement
-        });
-    });
-});
+router.route("/supplement").get((req,res)=>{
+
+    Supplement.find().then((supplements)=>{
+        res.json(supplements)
+    })
+    .catch((err)=>{
+        console.log(err);
+    })
+})
 
 //Get a specific Supplement
 
@@ -68,7 +64,7 @@ router.put('/supplement/edit/:id', (req, res) => {
 });
 
 //Delete Supplement
-router.delete('/supplement/delete/:id', (req, res) => {
+router.delete('/delete/:id', (req, res) => {
     Supplement.findByIdAndRemove(req.params.id).exec((err, deletedsupplement) => {
         if (err) return res.status(400).json({
             message: "Delete unsuccessful", err
@@ -79,7 +75,5 @@ router.delete('/supplement/delete/:id', (req, res) => {
         });
     });
 });
-
-
 
 module.exports = router;

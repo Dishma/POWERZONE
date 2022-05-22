@@ -10,7 +10,7 @@ export default function AllSupplements() {
   useEffect(() => {
     function getSupplements() {
       axios
-        .get("/supplement/")
+        .get("http://localhost:8000/supplement")
         .then((res) => {
             setSupplements(res.data);
         })
@@ -42,7 +42,7 @@ export default function AllSupplements() {
   }
 
   const onDelete = (id) => {
-    axios.delete(`/supplement/delete/${id}`)
+    axios.delete(`http://localhost:8000/supplement/delete/${id}`)
     .then((res) => {
       alert("Deleted Successfully!")
       getData();
@@ -66,16 +66,16 @@ export default function AllSupplements() {
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <Link to='/edit/:id'>
                 <Button variant="outline-success" onClick={() => setData()} >
-                    Edit</Button>
+                Edit</Button>
                 </Link>
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 
                 <Button variant="outline-danger" onClick={() => onDelete(supplement._id)}>
-                    Delete</Button>&nbsp;&nbsp;&nbsp;&nbsp;
+                Delete</Button>&nbsp;&nbsp;&nbsp;&nbsp;
 
                 <Button variant="outline-warning" href="#" onClick={() => 
-                  this.createPDF(supplement.Name, supplement.price, supplement.weight, supplement.category)}>
-                    Generate PDF</Button>&nbsp;
+                this.createPDF(supplement.Name, supplement.price, supplement.weight, supplement.category)}>
+                Generate PDF</Button>&nbsp;
 
                 </td></tr>
           )
@@ -87,7 +87,7 @@ export default function AllSupplements() {
     <div className="container">          
 
           <h1 className="text-center" id="title"> Supplement Table </h1><br/>
-            <table className="table table-bordered" id="supplements">
+            <table className="table table-bordered" id="supplement">
               <thead className="table-dark">
                 <tr>                  
                   <th scope="col">Name</th>

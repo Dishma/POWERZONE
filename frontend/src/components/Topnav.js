@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom"
 
 function Topnav() {
   return (
@@ -27,7 +28,7 @@ function Topnav() {
           </li>
           
           <li className="nav-item">
-          <a href="/add" className="nav-link"> Add Supplements </a></li> 
+          <a href="/supplements/addsupplement" className="nav-link"> Add Supplements </a></li> 
             
         </ul>
       </div>

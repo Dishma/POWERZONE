@@ -70,6 +70,11 @@ export default class App extends Component {
         <Route path="/allsupplements" component={AllSupplements}></Route>
         <Route path="/allsupplements" component={Footer}/>        
         
+        <Route path="/supplements/addsupplement" component={Header}></Route>
+        <Route path="/supplements/addsupplement" component={Topnav}></Route>
+        <Route path="/supplements/addsupplement" component={AddSupplement}></Route>
+        <Route path="/supplements/addsupplement" component={Footer}/>
+
         {/*Dishma*/}
         <main className="page-body-content">
           <Route path="/" exact component={Getstart}></Route>

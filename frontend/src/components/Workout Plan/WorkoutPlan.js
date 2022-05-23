@@ -30,7 +30,7 @@ export default class WorkoutPlan extends Component {
   //Delete Button
   onDelete = (id) => {
     axios.delete(`/workoutplan/delete/${id}`).then((res) => {
-      alert("Deleted Successfully.");
+      alert("Workout Plan Deleted Successfully.");
       this.retrieveWorkoutPlans();
     });
   }
@@ -83,7 +83,7 @@ export default class WorkoutPlan extends Component {
 
       axios.post("/workoutplan/save", data).then((res) => {
         if (res.data.success) {
-          alert("Added Successfully");
+          alert("Workout Plan Added Successfully.");
           this.setState(
             {
               planName: "",

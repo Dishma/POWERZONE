@@ -82,7 +82,7 @@ export default class MemberList extends Component {
     return true;
   };
 
-  //Add
+  //Add Button
   onSubmit = (e) => {
     e.preventDefault();
 
@@ -108,7 +108,7 @@ export default class MemberList extends Component {
 
       axios.post("/member/save", data).then((res) => {
         if (res.data.success) {
-          alert("Member Detailes Saved Successfully");
+          alert("Member Added Successfully.");
           this.setState(
             {
               memberName: "",
@@ -167,7 +167,7 @@ export default class MemberList extends Component {
   //Delete Button
   onDelete = (id) => {
     axios.delete(`/member/delete/${id}`).then((res) => {
-      alert("Deleted Successfully.")
+      alert("Member Deleted Successfully.")
       this.retrieveMembers();
     });
   }

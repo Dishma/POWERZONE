@@ -84,7 +84,7 @@ export default class EditPlan extends Component {
 
       axios.put(`/workoutplan/update/${id}`, data).then((res) => {
         if (res.data.success) {
-          alert("Updated Successfully");
+          alert("Workout Plan Updated Successfully.");
 
           this.setState(
             {

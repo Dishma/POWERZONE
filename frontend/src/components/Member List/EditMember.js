@@ -92,7 +92,7 @@ export default class EditMember extends Component {
 
       axios.put(`/member/update/${id}`, data).then((res) => {
         if (res.data.success) {
-          alert("Updated Successfully");
+          alert("Member Details Updated Successfully.");
           this.setState(
             {
               memberName: "",

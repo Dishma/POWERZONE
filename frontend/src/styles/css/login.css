@@ -29,6 +29,7 @@
 
 .login input[type="submit"]:hover {
     background: linear-gradient(45deg, #000000 0%, #6c5cff 51%, #FF512F 100%);
+    border-color: white;
 }
 
 .login .button-container {

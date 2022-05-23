@@ -65,10 +65,10 @@ export default class App extends Component {
 
 
         {/* Kavindu */}
-        <Route path="/allsupplements" component={Header}></Route>
-        <Route path="/allsupplements" component={Topnav}></Route>
-        <Route path="/allsupplements" component={Supplements}></Route>
-        <Route path="/allsupplements" component={Footer}/>        
+        <Route path="/supplements" component={Header}></Route>
+        <Route path="/supplements" component={Topnav}></Route>
+        <Route path="/supplements" component={Supplements}></Route>
+        <Route path="/supplements" component={Footer}/>        
         
         <Route path="/supplements/addsupplement" component={Header}></Route>
         <Route path="/supplements/addsupplement" component={Topnav}></Route>

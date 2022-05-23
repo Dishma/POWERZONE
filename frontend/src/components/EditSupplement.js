@@ -201,7 +201,7 @@ export default class EditSupplements extends Component {
               &nbsp; Edit
             </button>
             &nbsp;&nbsp;
-            <a href="/allsupplements">
+            <a href="/supplements">
               <button
                 type="button"
                 class="btn btn-secondary"

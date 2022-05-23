@@ -23,7 +23,7 @@ function Adminhome() {
                 <br />
                 <a role="button" className="button-87" href="#">Equipment Management</a>
                 <br />
-                <a role="button" className="button-87" href="/allsupplements">Supplement Management</a>
+                <a role="button" className="button-87" href="/supplements">Supplement Management</a>
                 <br />
                 <a role="button" className="button-87" href="/homedriver">Employee Management</a>
                 <br />

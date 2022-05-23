@@ -63,6 +63,7 @@ export default class App extends Component {
         <Route path="/editworkoutplan/:id" component={EditPlan}></Route>
         <Route path="/editworkoutplan" component={Footer}></Route>
 
+
         {/* Kavindu */}
         <Route path="/allsupplements" component={Header}></Route>
         <Route path="/allsupplements" component={Topnav}></Route>
@@ -73,6 +74,7 @@ export default class App extends Component {
         <Route path="/supplements/addsupplement" component={Topnav}></Route>
         <Route path="/supplements/addsupplement" component={AddSupplement}></Route>
         <Route path="/supplements/addsupplement" component={Footer}/>
+
 
         {/*Dishma*/}
         <main className="page-body-content">

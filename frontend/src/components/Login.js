@@ -31,7 +31,7 @@ export default class Login extends Component {
                         <br></br>
 
                         <div className="form-group">
-                            <button className="btn btn-dark btnn" type='submit'>Login</button>
+                            <a href='/adminhome'><button className="btn btn-dark btnn" type='submit'>Login</button></a>
                         </div>
 
                     </form>

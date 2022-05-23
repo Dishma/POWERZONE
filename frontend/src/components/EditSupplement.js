@@ -111,6 +111,8 @@ export default class EditSupplements extends Component {
         <center><h1 className='h3 mb-3 font-weight-normal'>Edit Supplement Details</h1></center>
 
         <form className='needs-validation' noValidate>
+
+            {/* NAME */}
         
             <div className="form-group" style={{ marginBottom: "15px" }}>
               <label style={{ marginBottom: "5px" }}>Name</label>
@@ -128,33 +130,36 @@ export default class EditSupplements extends Component {
               </div>
             </div>
 
+            {/* PRICE */}
+
             <div className="form-group" style={{ marginBottom: "15px" }}>
               <label style={{ marginBottom: "5px" }}>Price (Rs.)</label>
               <div class="input-group">
                 <input
-                  type="text"
+                  type="number"
                   className="form-control"
                   name="price"
                   placeholder="Enter Price"
                   value={this.state.price}
-                  onChange={this.handleInputChange}
-                ></input>
+                  onChange={this.handleInputChange}></input>
                 <div class="input-group-append">
                   <span class="input-group-text">.00</span>
                 </div>
-              </div>
+                </div>
 
-              <div style={{ fontSize: 12, color: "red" }}>
+                <div style={{ fontSize: 12, color: "red" }}>
                 {this.state.priceError}
-              </div>
-            </div>
+                </div>
+                </div>
 
-            <div className="form-group" style={{ marginBottom: "15px" }}>
+              {/* WEIGHT */}  
+
+              <div className="form-group" style={{ marginBottom: "15px" }}>
               <label style={{ marginBottom: "5px" }}>Weight</label>
               <input
                 type="number"
                 className="form-control"
-                name="duration"
+                name="weight"
                 placeholder="Enter Duration"
                 value={this.state.weight}
                 onChange={this.handleInputChange}
@@ -164,17 +169,20 @@ export default class EditSupplements extends Component {
                 {this.state.weightError}
               </div>
 
+              {/* CATEGORY */}
+
               <div
                 className="form-group"
                 style={{ marginBottom: "15px" }}
               >
                 <label style={{ marginBottom: "5px" }}>Category</label>
                 <select
-                  className="custom-select"
-                  id="category"
+                  className="form-select" 
+                  aria-label="category"
+                  name="category"
                   value={this.state.category}
-                  onChange={this.handleInputChange}
-                >
+                  onChange={this.handleInputChange}>
+
                   <option value>Choose...</option>
                   <option value="Amino & Glutamine">
                     Amino & Glutamine
@@ -188,7 +196,7 @@ export default class EditSupplements extends Component {
                 </select>
 
                 <div style={{ fontSize: 12, color: "red" }}>
-                {this.state.weightError}
+                {this.state.categoryError}
               </div>
               </div>
               <button

@@ -37,19 +37,19 @@ export default class Supplements extends Component {
   };
 
   //Search
-  filterData(supplements, searchKey) {
+  /* filterData(supplements, searchKey) {
     const result = supplements.filter(
-      (supplement) =>
-        supplement.name.toLowerCase().includes(searchKey) ||
-        supplement.price.toLowerCase().includes(searchKey) ||
-        supplement.weight.toLowerCase().includes(searchKey) ||
-        supplement.category.toLowerCase().includes(searchKey)
+      (supplements) =>
+        supplements.name.toUperCase().includes(searchKey) ||
+        supplements.price.toUperCase().includes(searchKey) ||
+        supplements.weight.toUperCase().includes(searchKey) ||
+        supplements.category.toUperCase().includes(searchKey)
     );
 
     this.setState({ supplements: result });
-  }
+  } */
 
-  handleSearchArea = (e) => {
+ /*  handleSearchArea = (e) => {
     const searchKey = e.currentTarget.value;
 
     axios.get("/supplements").then((res) => {
@@ -57,7 +57,7 @@ export default class Supplements extends Component {
         this.filterData(res.data.existingSupplements, searchKey);
       }
     });
-  };
+  }; */
 
   handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -281,11 +281,10 @@ export default class Supplements extends Component {
                     <input
                       type="text"
                       className="form-control"
-                      name="planName"
+                      name="name"
                       placeholder="Enter Supplement Name"
                       value={this.state.name}
-                      onChange={this.handleInputChange}
-                    ></input>
+                      onChange={this.handleInputChange}></input>
 
                     <div style={{ fontSize: 12, color: "red" }}>
                       {this.state.nameError}
@@ -318,27 +317,24 @@ export default class Supplements extends Component {
                     <input
                       type="number"
                       className="form-control"
-                      name="duration"
-                      placeholder="Enter Duration"
+                      name="weight"
+                      placeholder="Enter Weight"
                       value={this.state.weight}
-                      onChange={this.handleInputChange}
-                    ></input>
+                      onChange={this.handleInputChange}></input>
 
                     <div style={{ fontSize: 12, color: "red" }}>
                       {this.state.weightError}
                     </div>
 
-                    <div
-                      className="form-group"
-                      style={{ marginBottom: "15px" }}
-                    >
-                      <label style={{ marginBottom: "5px" }}>Category</label>
+                    
+                    <div className="form-group" style={{ marginBottom: "15px" }}>
+                    <label style={{ marginBottom: "5px" }}>Category</label>
                       <select
-                        className="custom-select"
-                        id="category"
+                        className="form-select" 
+                        aria-label="category"                        
+                        name="category"
                         value={this.state.category}
-                        onChange={this.handleInputChange}
-                      >
+                        onChange={this.handleInputChange}>
                         <option value>Choose...</option>
                         <option value="Amino & Glutamine">
                           Amino & Glutamine
@@ -352,7 +348,7 @@ export default class Supplements extends Component {
                       </select>
 
                       <div style={{ fontSize: 12, color: "red" }}>
-                      {this.state.weightError}
+                      {this.state.categoryError}
                     </div>
                     </div>
                   </div>

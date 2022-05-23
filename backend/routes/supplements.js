@@ -5,7 +5,7 @@ const router = express.Router();
 
 //Add Supplement
 router.post('/supplement/add', (req, res) => {
-    let newSupplement = new Supplement(req.body);
+    let newSupplement = new Supplements(req.body);
 
     newSupplement.save((err) => {
         if (err) {
@@ -71,14 +71,14 @@ router.put('/supplement/edit/:id', (req, res) => {
 });
 
 //Delete Supplement
-router.delete('/delete/:id', (req, res) => {
+router.delete('/supplement/delete/:id', (req, res) => {
     Supplements.findByIdAndRemove(req.params.id).exec((err, deletedsupplement) => {
         if (err) return res.status(400).json({
             message: "Delete unsuccessful", err
         });
 
         return res.json({
-            message: "Deleted Successfull", deletedsupplement
+            message: "Deleted Successfully", deletedsupplement
         });
     });
 });

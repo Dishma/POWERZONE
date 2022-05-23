@@ -1,44 +1,4 @@
-.gymbody {
-    background-image: url('https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?ixlib=rb-1.2.1&raw_url=true&q=80&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471');
-}
-
-.login-clean {
-    padding: 45px 0px 55px 0px;
-}
-
-.login-clean form {
-    max-width: 320px;
-    width: 90%;
-    margin: 0 auto;
-    background-color: #dddddd;
-    padding: 40px;
-    border-radius: 4px;
-    color: #000000;
-    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
-}
-
-.login-clean form .form-control {
-    background: #f7f9fc;
-    border-bottom: 1px solid #dfe7f1;
-    border-radius: 10;
-    outline: none;
-    color: inherit;
-    text-indent: 8px;
-    height: 42px;
-}
-
-.btnn {
-    width: 80%;
-    margin-left: 25px;
-    cursor: pointer;
-    margin-bottom: 10px;
-}
-
-.login-clean h2 {
-    text-align: center;
-}
-
-.app {
+.login .app {
     font-family: sans-serif;
     display: flex;
     align-items: center;
@@ -50,13 +10,13 @@
     background-color: #f8f9fd;
 }
 
-input[type="text"],
-input[type="password"] {
+.login input[type="text"],
+.login input[type="password"] {
     height: 25px;
     border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-input[type="submit"] {
+.login input[type="submit"] {
     margin-top: 10px;
     cursor: pointer;
     font-size: 15px;
@@ -67,37 +27,37 @@ input[type="submit"] {
     border-radius: 10%;
 }
 
-input[type="submit"]:hover {
+.login input[type="submit"]:hover {
     background: linear-gradient(45deg, #000000 0%, #6c5cff 51%, #FF512F 100%);
 }
 
-.button-container {
+.login .button-container {
     display: flex;
     justify-content: center;
 }
 
-.login-form {
+.login .login-form {
     background-color: white;
     padding: 2rem;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 5%;
 }
 
-.list-container {
+.login .list-container {
     display: flex;
 }
 
-.error {
+.login .error {
     color: red;
     font-size: 12px;
 }
 
-.title {
+.login .title {
     font-size: 25px;
     margin-bottom: 20px;
 }
 
-.input-container {
+.login .input-container {
     display: flex;
     flex-direction: column;
     gap: 8px;

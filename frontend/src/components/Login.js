@@ -3,57 +3,7 @@ import '../styles/css/login.css';
 
 export default class Login extends Component {
 
-    // Validation
-    /* validate = () => {
- 
-         let usernameError = "";
-         let passwordError = "";
-     
- 
-         if (!this.state.username) {
-             usernameError = 'This field is required!';
-         }
-         if (!this.state.password) {
-             passwordError = 'This field is required!';
-         }
- 
- 
-         if (usernameError || passwordError) {
-             this.setState({ usernameError, passwordError});
- 
-             return false;
-         }
- 
-         return true;
-     };*/
 
-
-    //Login
-    login = (e) => {
-        e.preventDefault();
-
-        /*const { username, password } = this.state;
-
-        const isValid = this.validate();
-        if (isValid) {
-
-            const data = {
-                username: username,
-                password: password
-            }
-
-            console.log(data)
-
-            if (username = username && password= password) {
-                window.location.href = '/adminhome';
-            }
-            else {
-                alert('Invalid username or password.');
-            }*/
-
-        window.location.href = '/adminhome';
-
-    }
 
     render() {
         return (
@@ -68,24 +18,23 @@ export default class Login extends Component {
                         <br></br>
 
                         <div className="form-group">
-                            <input className="form-control" type='text' placeholder="Username" />
+                            <input className="form-control" type='text' placeholder="Enter Username" />
                         </div>
 
                         <br></br>
 
                         <div className="form-group">
-                            <input className="form-control" type='password' placeholder="Password" />
+                            <input className="form-control" type='password' placeholder="Enter Password" />
                         </div>
 
                         <br></br>
                         <br></br>
 
                         <div className="form-group">
-                            <button className="btn btn-dark btnn" type='submit' onClick={this.login}>Login</button>
+                            <button className="btn btn-dark btnn" type='submit'>Login</button>
                         </div>
 
                     </form>
-
                 </div>
             </div>
         )

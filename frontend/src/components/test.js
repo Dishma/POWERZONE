@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import "../styles/css/login.css";
+import ReactDOM from "react-dom";
+
+import "../styles/css/test.css";
 
 function App() {
   // React States
@@ -9,14 +11,18 @@ function App() {
   // User Login info
   const database = [
     {
-      username: "admin",
-      password: "admin"
+      username: "user1",
+      password: "pass1"
+    },
+    {
+      username: "user2",
+      password: "pass2"
     }
   ];
 
   const errors = {
-    uname: "Invalid Username",
-    pass: "Invalid Password"
+    uname: "invalid username",
+    pass: "invalid password"
   };
 
   const handleSubmit = (event) => {
@@ -35,7 +41,6 @@ function App() {
         setErrorMessages({ name: "pass", message: errors.pass });
       } else {
         setIsSubmitted(true);
-        window.location.href = '/adminhome';
       }
     } else {
       // Username not found

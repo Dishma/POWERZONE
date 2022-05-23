@@ -24,6 +24,7 @@ import Homedriver from "./components/Homedriver";
 
 import Adminhome from "./components/Adminhome";
 
+
 //Kavindu
 import Topnav from './components/Topnav';
 import AllSupplements from "./components/AllSupplements";
@@ -38,10 +39,8 @@ export default class App extends Component {
       <BrowserRouter>
 
         {/*Chamod*/}
-        <Route path="/login" component={Header}></Route>
         <Route path="/login" component={Login}></Route>
-        <Route path="/login" component={Footer}></Route>
-
+        
         <Route path="/memberlist" component={Header}></Route>
         <Route path="/memberlist" component={Navbar}></Route>
         <Route path="/memberlist" component={MemberList}></Route>

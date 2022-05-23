@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
 
-const Schema = mongoose.Schema;
-
-const supplementSchema = new Schema({
+const supplementSchema = new mongoose.Schema({
 
     name : {
         type : String,
@@ -25,6 +23,4 @@ const supplementSchema = new Schema({
     }
 })
 
-const Supplement = mongoose.model("Supplement", supplementSchema);
-
-module.exports = Supplement;
+module.exports = mongoose.model('Supplement', supplementSchema);

@@ -27,7 +27,7 @@ import Adminhome from "./components/Adminhome";
 
 //Kavindu
 import Topnav from './components/Topnav';
-import AllSupplements from "./components/AllSupplements";
+import Supplements from "./components/Supplements";
 import AddSupplement from "./components/AddSupplement";
 import EditSupplement from "./components/EditSupplement";
 
@@ -67,13 +67,18 @@ export default class App extends Component {
         {/* Kavindu */}
         <Route path="/allsupplements" component={Header}></Route>
         <Route path="/allsupplements" component={Topnav}></Route>
-        <Route path="/allsupplements" component={AllSupplements}></Route>
+        <Route path="/allsupplements" component={Supplements}></Route>
         <Route path="/allsupplements" component={Footer}/>        
         
         <Route path="/supplements/addsupplement" component={Header}></Route>
         <Route path="/supplements/addsupplement" component={Topnav}></Route>
         <Route path="/supplements/addsupplement" component={AddSupplement}></Route>
         <Route path="/supplements/addsupplement" component={Footer}/>
+
+        <Route path="/editsupplement" component={Header}></Route>
+        <Route path="/editsupplement" component={Topnav}></Route>
+        <Route path="/editsupplement/:id" component={EditSupplement}></Route>
+        <Route path="/editsupplement" component={Footer}/>  
 
 
         {/*Dishma*/}

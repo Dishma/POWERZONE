@@ -1,5 +1,7 @@
-const router = require("express").Router();
-let Supplement = require("../models/supplement");
+const express = require('express')
+let Supplements = require("../models/supplement");
+
+const router = express.Router(); 
 
 //Add Supplement
 router.post('/supplement/add', (req, res) => {
@@ -18,21 +20,26 @@ router.post('/supplement/add', (req, res) => {
 });
 
 //Get Supplement
-router.route("/supplement").get((req,res)=>{
 
-    Supplement.find().then((supplements)=>{
-        res.json(supplements)
-    })
-    .catch((err)=>{
-        console.log(err);
-    })
-})
+router.get('/supplements', (req, res) => {
+    Supplements.find().exec((err, supplements) => {
+        if (err) {
+            return res.status(400).json({
+                error: err
+            });
+        }
+        return res.status(200).json({
+            success: true,
+            existingSupplements: supplements
+        });
+    });
+});
 
 //Get a specific Supplement
 
 router.get('/supplement/:id', (req, res) => {
     let supplementId = req.params.id;
-    Supplement.findById(supplementId, (err, supplement) => {
+    Supplements.findById(supplementId, (err, supplement) => {
         if (err) {
             return res.status(400).json({ success: false, err });
         }
@@ -46,7 +53,7 @@ router.get('/supplement/:id', (req, res) => {
 
 //Update Supplement
 router.put('/supplement/edit/:id', (req, res) => {
-    Supplement.findByIdAndUpdate(
+    Supplements.findByIdAndUpdate(
         req.params.id,
         {
             $set: req.body
@@ -57,7 +64,7 @@ router.put('/supplement/edit/:id', (req, res) => {
             }
 
             return res.status(200).json({
-                success: "Update Successfully"
+                success: "Updated Successfully!"
             });
         }
     );
@@ -65,13 +72,13 @@ router.put('/supplement/edit/:id', (req, res) => {
 
 //Delete Supplement
 router.delete('/delete/:id', (req, res) => {
-    Supplement.findByIdAndRemove(req.params.id).exec((err, deletedsupplement) => {
+    Supplements.findByIdAndRemove(req.params.id).exec((err, deletedsupplement) => {
         if (err) return res.status(400).json({
             message: "Delete unsuccessful", err
         });
 
         return res.json({
-            message: "Delete Successfull", deletedsupplement
+            message: "Deleted Successfull", deletedsupplement
         });
     });
 });

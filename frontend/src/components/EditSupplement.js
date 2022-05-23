@@ -1,106 +1,219 @@
-import React, {useEffect, useState} from "react";
+import React, { Component } from "react";
 import axios from "axios";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-export default function EditSupplement(){
-      
-    const [name, setName] = useState("");
-    const [price, setPrice] = useState("");
-    const [weight, setWeight] = useState("");
-    const [category, setCategory] = useState("");
+export default class EditSupplements extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
 
-    const [id , setID] = useState(null);
-    
-    useEffect(() => {
-      setID(localStorage.getItem('ID'))
-      setName(localStorage.getItem('Name'));
-      setPrice(localStorage.getItem('Price'));
-      setWeight(localStorage.getItem('Weight'));
-      setCategory(localStorage.getItem('Category'));
-    }, []);
-    
-    const editSupplementData = () => {
-      axios.put(`/supplement/edit/${id}` , {
-        name,
-        price,
-        weight,
-        category
-      })
+      name: "",
+      price: "",
+      weight: "",
+      category: ""    
+    };
+  }
+  
+  componentDidMount() {
+    const id = this.props.match.params.id;
+
+    axios.get(`/supplement/${id}`).then((res) => {
+      if (res.data.success) {
+        this.setState({
+          name: res.data.supplement.name,
+          price: res.data.supplement.price,
+          weight: res.data.supplement.weight,
+          category: res.data.supplement.category,
+        });
+        console.log(this.state.supplement);
+      }
+    });
+  }  
+
+  handleInputChange = (e) => {
+    const { name, value } = e.target;
+
+    this.setState({
+      ...this.state,
+      [name]: value,
+    });
+  };
+
+  // Validation
+  validate = () => {
+    let nameError = "";
+    let priceError = "";
+    let weightError = "";
+    let categoryError = "";
+
+    if (!this.state.name) {
+      nameError = "This field is required!";
+    }
+    if (!this.state.price) {
+      priceError = "This field is required!";
+    }
+    if (!this.state.weight) {
+      weightError = "This field is required!";
+    }
+    if (!this.state.category) {
+      categoryError = "This field is required!";
     }
 
-    
+    if (nameError || priceError || weightError || categoryError) {
+      this.setState({ nameError, priceError, weightError, categoryError });
+      return false;
+    }
+    return true;
+  };
 
-    return(
-    <div className="container">
-      <form onSubmit>
-        <div className="form-group">
-          
-          <label htmlFor="name">Supplement Name</label>
-          <input type="text"
-          className="form-control"
-          id="name" 
-          placeholder="Supplement Name"
-          defaultValue={name}          
-          onChange={(e) => {setName(e.target.value);}}/>
+  //Edit
+  onSubmit = (e) => {
+    e.preventDefault();
+
+    const id = this.props.match.params.id;
+
+    const { name, price, weight, category } = this.state;
+
+    const isValid = this.validate();
+    if (isValid) {
+
+      const data = {
+        name: name,
+        price: price,
+        weight: weight,
+        category:category
+      }
+      console.log(data)
+
+      axios.put(`/supplement/edit/${id}`, data).then((res) => {
+        if (res.data.success) {
+          alert("Updated Successfully");
+
+          this.setState(
+            {
+              name: "",
+              price: "",
+              weight: "",
+              category: ""
+            }
+          );
+
+          window.location.href = '/supplements';
+        }
+      });
+    }
+  };  
+
+  render() {
+    return (
+      <div className="container" style={{ marginBottom: '75px' }}>
+        <div className='col-md-8 mt-4 mx-auto'>
+        <center><h1 className='h3 mb-3 font-weight-normal'>Edit Supplement Details</h1></center>
+
+        <form className='needs-validation' noValidate>
         
+            <div className="form-group" style={{ marginBottom: "15px" }}>
+              <label style={{ marginBottom: "5px" }}>Name</label>
+              <input
+                type="text"
+                className="form-control"
+                name="name"
+                placeholder="Enter Supplement Name"
+                value={this.state.name}
+                onChange={this.handleInputChange}
+              ></input>
+
+              <div style={{ fontSize: 12, color: "red" }}>
+                {this.state.nameError}
+              </div>
+            </div>
+
+            <div className="form-group" style={{ marginBottom: "15px" }}>
+              <label style={{ marginBottom: "5px" }}>Price (Rs.)</label>
+              <div class="input-group">
+                <input
+                  type="text"
+                  className="form-control"
+                  name="price"
+                  placeholder="Enter Price"
+                  value={this.state.price}
+                  onChange={this.handleInputChange}
+                ></input>
+                <div class="input-group-append">
+                  <span class="input-group-text">.00</span>
+                </div>
+              </div>
+
+              <div style={{ fontSize: 12, color: "red" }}>
+                {this.state.priceError}
+              </div>
+            </div>
+
+            <div className="form-group" style={{ marginBottom: "15px" }}>
+              <label style={{ marginBottom: "5px" }}>Weight</label>
+              <input
+                type="number"
+                className="form-control"
+                name="duration"
+                placeholder="Enter Duration"
+                value={this.state.weight}
+                onChange={this.handleInputChange}
+              ></input>
+
+              <div style={{ fontSize: 12, color: "red" }}>
+                {this.state.weightError}
+              </div>
+
+              <div
+                className="form-group"
+                style={{ marginBottom: "15px" }}
+              >
+                <label style={{ marginBottom: "5px" }}>Category</label>
+                <select
+                  className="custom-select"
+                  id="category"
+                  value={this.state.category}
+                  onChange={this.handleInputChange}
+                >
+                  <option value>Choose...</option>
+                  <option value="Amino & Glutamine">
+                    Amino & Glutamine
+                  </option>
+                  <option value="Creatine">Creatine</option>
+                  <option value="Fat Burners">Fat Burners</option>
+                  <option value="Pre-workout">Pre-workout</option>
+                  <option value="Protein">Protein</option>
+                  <option value="Vitamins">Vitamins</option>
+                  <option value="Weight Gainers">Weight Gainers</option>
+                </select>
+
+                <div style={{ fontSize: 12, color: "red" }}>
+                {this.state.weightError}
+              </div>
+              </div>
+              <button
+              className="btn btn-warning"
+              type="submit"
+              style={{ marginTop: "15px" }}
+              onClick={this.onSubmit}
+            >
+              <i className="far fa-check-square"></i>
+              &nbsp; Edit
+            </button>
+            &nbsp;&nbsp;
+            <a href="/allsupplements">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                style={{ marginTop: "15px" }}
+              >
+                <i class="fa-regular fa-circle-xmark"></i>&nbsp;Close
+              </button>
+            </a>
+            </div>
+          </form>  
         </div>
-
-        <div className="form-group">
-          
-          <label htmlFor="price">Price (Rs)</label>
-          <input type="number"
-          min="0" step="0.01" 
-          className="form-control" 
-          id="price" 
-          placeholder="Supplement Price"
-          defaultValue={price} 
-          onChange={(e) => {setPrice(e.target.value);}}/>
-        
-        </div>
-
-        <div className="form-group">
-          
-          <label htmlFor="weight">Weight</label> 
-          <input type="number"
-          className="form-control"
-          id="weight"
-          placeholder="Supplement Weight"
-          defaultValue={weight}
-          onChange={(e) => {setWeight(e.target.value);}}/>
-        
-        </div>
-
-        <div className="form-group">    
-          
-          <label htmlFor="weight">Category</label>
-          <div className="input-group mb-3">
-          <div className="input-group-prepend">
-          <label className="input-group-text" htmlFor="category">Category</label>
-                
-        </div>
-            <select className="custom-select" id="category"
-            defaultValue={category}
-            onChange={(e) => {
-
-                setCategory(e.target.value);
-
-            }}>
-                <option value>Choose...</option>
-                    <option defaultValue="Amino & Glutamine">Amino & Glutamine</option>
-                    <option defaultValue="Creatine">Creatine</option>
-                    <option defaultValue="Fat Burners">Fat Burners</option>
-                    <option defaultValue="Pre-workout">Pre-workout</option>
-                    <option defaultValue="Protein">Protein</option>
-                    <option defaultValue="Vitamins">Vitamins</option>
-                    <option defaultValue="Weight Gainers">Weight Gainers</option>
-            </select>
-        </div></div>
-
-        <br/>
-
-        <button type="submit" onClick={editSupplementData} className="btn btn-primary">
-          Update Supplement
-        </button>
-      </form>
-    </div>
-    );
+      </div>
+    )
+  }
 }

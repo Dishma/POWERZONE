@@ -34,7 +34,7 @@ router.get('/members', (req, res) => {
     });
 });
 
-//Get Specific Member
+//Get Specific Member Details
 router.get('/member/:id', (req, res) => {
     let memberId = req.params.id;
     Members.findById(memberId, (err, member) => {

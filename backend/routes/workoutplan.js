@@ -3,7 +3,7 @@ const WorkoutPlans = require('../models/workoutplan');
 
 const router = express.Router();
 
-//add workoutplan
+//Add Workoutplan
 router.post('/workoutplan/save', (req, res) => {
     let newWorkoutPlan = new WorkoutPlans(req.body);
 
@@ -19,7 +19,7 @@ router.post('/workoutplan/save', (req, res) => {
     });
 });
 
-//get workoutplans
+//Get All Workoutplans
 router.get('/workoutplans', (req, res) => {
     WorkoutPlans.find().exec((err, workoutplans) => {
         if (err) {
@@ -34,21 +34,7 @@ router.get('/workoutplans', (req, res) => {
     });
 });
 
-//get specific workoutplan
-router.get('/workoutplan/:id', (req, res) => {
-    let workoutplanId = req.params.id;
-    WorkoutPlans.findById(workoutplanId, (err, workoutplan) => {
-        if (err) {
-            return res.status(400).json({ success: false, err });
-        }
-        return res.status(200).json({
-            success: true,
-            workoutplan
-        });
-    });
-});
-
-//update workoutplan
+//Update Workoutplan
 router.put('/workoutplan/update/:id', (req, res) => {
     WorkoutPlans.findByIdAndUpdate(
         req.params.id,

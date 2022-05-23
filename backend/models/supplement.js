@@ -20,6 +20,10 @@ const supplementSchema = new mongoose.Schema({
     category : {
         type : String,
         required : true
+    },
+    availability : {
+        type : String,
+        required : true
     }
 })
 

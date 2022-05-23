@@ -72,7 +72,7 @@ export default class Supplements extends Component {
   onSubmit = (e) => {
     e.preventDefault();
 
-    const { name, price, weight, category } = this.state;
+    const { name, price, weight, category, availability } = this.state;
 
     const isValid = this.validate();
     if (isValid) {
@@ -80,7 +80,8 @@ export default class Supplements extends Component {
         name: name,
         price: price,
         weight: weight,
-        category: category
+        category: category,
+        availability:availability
       };
       console.log(data);
 
@@ -92,6 +93,7 @@ export default class Supplements extends Component {
             price: "",
             weight: "",
             category: "",
+            availability: "",
           });
 
           window.location.href = "/supplements";
@@ -106,6 +108,7 @@ export default class Supplements extends Component {
     let priceError = "";
     let weightError = "";
     let categoryError = "";
+    let availabilityError= "";
 
     if (!this.state.name) {
       nameError = "This field is required!";
@@ -119,20 +122,24 @@ export default class Supplements extends Component {
     if (!this.state.category) {
       categoryError = "This field is required!";
     }
+    if (!this.state.category) {
+      availabilityError = "This field is required!";
+    }
 
-    if (nameError || priceError || weightError || categoryError) {
-      this.setState({ nameError, priceError, weightError, categoryError });
+    if (nameError || priceError || weightError || categoryError || availabilityError ) {
+      this.setState({ nameError, priceError, weightError, categoryError, availabilityError });
       return false;
     }
     return true;
   };
 
   //Report
-  createPDF = (name, price, weight, category) => {
+  createPDF = (name, price, weight, category, availability) => {
     console.log(name);
     console.log(price);
     console.log(weight);
     console.log(category);
+    console.log(availability);
 
     const unit = "pt";
     const size = "A4"; //page size
@@ -144,6 +151,7 @@ export default class Supplements extends Component {
     const prices = `Price:  Rs.${price}.00 `;
     const weights = `Weight:  ${weight} `;
     const categorys = `Category:  ${category} `;
+    const availabilities = `Availability: ${availability} `;
 
     const image =
       "https://res.cloudinary.com/dnonvyjrq/image/upload/v1651654099/gym_logo_vndrpz.jpg";
@@ -161,6 +169,7 @@ export default class Supplements extends Component {
     doc.text(50, 240, prices);
     doc.text(50, 280, weights);
     doc.text(50, 320, categorys);
+    doc.text(50, 360, availabilities);
 
     doc.addImage(image, "PNG", left, top, imgWidth, imgHeight);
 
@@ -189,7 +198,7 @@ export default class Supplements extends Component {
           </div>
         </div>
 
-        <table className="table table-hover" style={{ marginTop: "40px" }}>
+        <table className="table table-bordered" style={{ marginTop: "40px"}}>
           <thead>
             <tr>
               <th scope="col">#</th>
@@ -197,6 +206,7 @@ export default class Supplements extends Component {
               <th scope="col">Price</th>
               <th scope="col">Weight</th>
               <th scope="col">Category</th>
+              <th scope="col">Availability</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
@@ -209,6 +219,7 @@ export default class Supplements extends Component {
                 <td>Rs.{supplements.price}.00</td>
                 <td>{supplements.weight}</td>
                 <td>{supplements.category}</td>
+                <td>{supplements.availability}</td>
                 <td>
                   <a
                     className="btn btn-warning"
@@ -231,7 +242,8 @@ export default class Supplements extends Component {
                         supplements.name,
                         supplements.price,
                         supplements.weight,
-                        supplements.category
+                        supplements.category,
+                        supplements.availability,
                       )
                     }
                   >
@@ -313,7 +325,7 @@ export default class Supplements extends Component {
                   </div>
 
                   <div className="form-group" style={{ marginBottom: "15px" }}>
-                    <label style={{ marginBottom: "5px" }}>Weight</label>
+                    <label style={{ marginBottom: "5px" }}>Weight (g) </label>
                     <input
                       type="number"
                       className="form-control"
@@ -321,6 +333,7 @@ export default class Supplements extends Component {
                       placeholder="Enter Weight"
                       value={this.state.weight}
                       onChange={this.handleInputChange}></input>
+                      
 
                     <div style={{ fontSize: 12, color: "red" }}>
                       {this.state.weightError}
@@ -350,7 +363,29 @@ export default class Supplements extends Component {
                       <div style={{ fontSize: 12, color: "red" }}>
                       {this.state.categoryError}
                     </div>
+                    </div> 
+
+                    <div className="form-group" style={{ marginBottom: "15px" }}>
+                    <label style={{ marginBottom: "5px" }}>Availability</label>
+                      <select
+                      className="form-select" 
+                      aria-label="availability"                        
+                      name="availability"
+                      value={this.state.availability}
+                      onChange={this.handleInputChange}>
+                      <option value>Choose...</option>
+                      <option value="In Stock">
+                        In Stock
+                      </option>
+                      <option value="Out of Stock">Out of Stock</option>
+                      
+                      </select>
+
+                      <div style={{ fontSize: 12, color: "red" }}>
+                      {this.state.availabilityError}
                     </div>
+                      </div>                   
+                    
                   </div>
                 </form>
               </div>

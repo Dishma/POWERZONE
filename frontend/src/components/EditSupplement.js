@@ -6,14 +6,14 @@ export default class EditSupplements extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
       name: "",
       price: "",
       weight: "",
-      category: ""    
+      category: "",
+      availability: "",
     };
   }
-  
+
   componentDidMount() {
     const id = this.props.match.params.id;
 
@@ -24,11 +24,12 @@ export default class EditSupplements extends Component {
           price: res.data.supplement.price,
           weight: res.data.supplement.weight,
           category: res.data.supplement.category,
+          availability: res.data.supplement.availability,
         });
         console.log(this.state.supplement);
       }
     });
-  }  
+  }
 
   handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -45,6 +46,7 @@ export default class EditSupplements extends Component {
     let priceError = "";
     let weightError = "";
     let categoryError = "";
+    let availabilityError = "";
 
     if (!this.state.name) {
       nameError = "This field is required!";
@@ -58,9 +60,12 @@ export default class EditSupplements extends Component {
     if (!this.state.category) {
       categoryError = "This field is required!";
     }
+    if (!this.state.availability) {
+      availabilityError = "This field is required!";
+    }
 
-    if (nameError || priceError || weightError || categoryError) {
-      this.setState({ nameError, priceError, weightError, categoryError });
+    if (nameError || priceError || weightError || categoryError || availabilityError) {
+      this.setState({ nameError, priceError, weightError, categoryError, availabilityError });
       return false;
     }
     return true;
@@ -72,48 +77,50 @@ export default class EditSupplements extends Component {
 
     const id = this.props.match.params.id;
 
-    const { name, price, weight, category } = this.state;
+    const { name, price, weight, category, availability } = this.state;
 
     const isValid = this.validate();
     if (isValid) {
-
       const data = {
         name: name,
         price: price,
         weight: weight,
-        category:category
-      }
-      console.log(data)
+        category: category,
+        availability: availability,
+      };
+      console.log(data);
 
       axios.put(`/supplement/edit/${id}`, data).then((res) => {
         if (res.data.success) {
           alert("Updated Successfully");
 
-          this.setState(
-            {
-              name: "",
-              price: "",
-              weight: "",
-              category: ""
-            }
-          );
+          this.setState({
+            name: "",
+            price: "",
+            weight: "",
+            category: "",
+            availability: "",
+          });
 
-          window.location.href = '/supplements';
+          window.location.href = "/supplements";
         }
       });
     }
-  };  
+  };
 
   render() {
     return (
-      <div className="container" style={{ marginBottom: '75px' }}>
-        <div className='col-md-8 mt-4 mx-auto'>
-        <center><h1 className='h3 mb-3 font-weight-normal'>Edit Supplement Details</h1></center>
+      <div className="container" style={{ marginBottom: "75px" }}>
+        <div className="col-md-8 mt-4 mx-auto">
+          <center>
+            <h1 className="h3 mb-3 font-weight-normal">
+              Edit Supplement Details
+            </h1>
+          </center>
 
-        <form className='needs-validation' noValidate>
-
+          <form className="needs-validation" noValidate>
             {/* NAME */}
-        
+
             <div className="form-group" style={{ marginBottom: "15px" }}>
               <label style={{ marginBottom: "5px" }}>Name</label>
               <input
@@ -141,20 +148,21 @@ export default class EditSupplements extends Component {
                   name="price"
                   placeholder="Enter Price"
                   value={this.state.price}
-                  onChange={this.handleInputChange}></input>
+                  onChange={this.handleInputChange}
+                ></input>
                 <div class="input-group-append">
                   <span class="input-group-text">.00</span>
                 </div>
-                </div>
+              </div>
 
-                <div style={{ fontSize: 12, color: "red" }}>
+              <div style={{ fontSize: 12, color: "red" }}>
                 {this.state.priceError}
-                </div>
-                </div>
+              </div>
+            </div>
 
-              {/* WEIGHT */}  
+            {/* WEIGHT */}
 
-              <div className="form-group" style={{ marginBottom: "15px" }}>
+            <div className="form-group" style={{ marginBottom: "15px" }}>
               <label style={{ marginBottom: "5px" }}>Weight</label>
               <input
                 type="number"
@@ -164,29 +172,21 @@ export default class EditSupplements extends Component {
                 value={this.state.weight}
                 onChange={this.handleInputChange}
               ></input>
-
               <div style={{ fontSize: 12, color: "red" }}>
                 {this.state.weightError}
               </div>
-
               {/* CATEGORY */}
-
-              <div
-                className="form-group"
-                style={{ marginBottom: "15px" }}
-              >
+              <div className="form-group" style={{ marginBottom: "15px" }}>
                 <label style={{ marginBottom: "5px" }}>Category</label>
                 <select
-                  className="form-select" 
+                  className="form-select"
                   aria-label="category"
                   name="category"
                   value={this.state.category}
-                  onChange={this.handleInputChange}>
-
+                  onChange={this.handleInputChange}
+                >
                   <option value>Choose...</option>
-                  <option value="Amino & Glutamine">
-                    Amino & Glutamine
-                  </option>
+                  <option value="Amino & Glutamine">Amino & Glutamine</option>
                   <option value="Creatine">Creatine</option>
                   <option value="Fat Burners">Fat Burners</option>
                   <option value="Pre-workout">Pre-workout</option>
@@ -196,32 +196,50 @@ export default class EditSupplements extends Component {
                 </select>
 
                 <div style={{ fontSize: 12, color: "red" }}>
-                {this.state.categoryError}
+                  {this.state.categoryError}
+                </div>
               </div>
+              <div className="form-group" style={{ marginBottom: "15px" }}>
+                <label style={{ marginBottom: "5px" }}>Availability</label>
+                <select
+                  className="form-select"
+                  aria-label="availability"
+                  name="availability"
+                  value={this.state.availability}
+                  onChange={this.handleInputChange}
+                >
+                  <option value>Choose...</option>
+                  <option value="In Stock">In Stock</option>
+                  <option value="Out of Stock">Out of Stock</option>
+                </select>
+
+                <div style={{ fontSize: 12, color: "red" }}>
+                  {this.state.availabilityError}
+                </div>
               </div>
+              
               <button
-              className="btn btn-warning"
-              type="submit"
-              style={{ marginTop: "15px" }}
-              onClick={this.onSubmit}
-            >
-              <i className="far fa-check-square"></i>
-              &nbsp; Edit
-            </button>
-            &nbsp;&nbsp;
-            <a href="/supplements">
-              <button
-                type="button"
-                class="btn btn-secondary"
+                className="btn btn-warning"
+                type="submit"
                 style={{ marginTop: "15px" }}
-              >
-                <i class="fa-regular fa-circle-xmark"></i>&nbsp;Close
+                onClick={this.onSubmit}>
+                <i className="far fa-check-square"></i>
+                &nbsp; Edit
               </button>
-            </a>
+              &nbsp;&nbsp;
+              <a href="/supplements">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  style={{ marginTop: "15px" }}
+                >
+                  <i class="fa-regular fa-circle-xmark"></i>&nbsp;Close
+                </button>
+              </a>
             </div>
-          </form>  
+          </form>
         </div>
       </div>
-    )
+    );
   }
 }

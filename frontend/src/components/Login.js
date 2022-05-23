@@ -33,8 +33,10 @@ function App() {
       if (userData.password !== pass.value) {
         // Invalid password
         setErrorMessages({ name: "pass", message: errors.pass });
+        alert("Invalid Credentials.");
       } else {
         setIsSubmitted(true);
+        alert("Successfully Login.");
         window.location.href = '/adminhome';
       }
     } else {

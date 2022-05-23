@@ -34,6 +34,20 @@ router.get('/workoutplans', (req, res) => {
     });
 });
 
+//Get Specific Workoutplan
+router.get('/workoutplan/:id', (req, res) => {
+    let workoutplanId = req.params.id;
+    WorkoutPlans.findById(workoutplanId, (err, workoutplan) => {
+        if (err) {
+            return res.status(400).json({ success: false, err });
+        }
+        return res.status(200).json({
+            success: true,
+            workoutplan
+        });
+    });
+});
+
 //Update Workoutplan
 router.put('/workoutplan/update/:id', (req, res) => {
     WorkoutPlans.findByIdAndUpdate(

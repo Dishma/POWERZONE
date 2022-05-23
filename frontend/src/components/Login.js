@@ -35,7 +35,6 @@ function App() {
         setErrorMessages({ name: "pass", message: errors.pass });
       } else {
         setIsSubmitted(true);
-        alert("Successfully Login.");
         window.location.href = '/adminhome';
       }
     } else {

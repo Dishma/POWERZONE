@@ -26,12 +26,11 @@ import Adminhome from "./components/Adminhome";
 
 
 //Kavindu
-import Topnav from './components/Topnav';
-import Supplements from "./components/Supplements";
-import AddSupplement from "./components/AddSupplement";
-import EditSupplement from "./components/EditSupplement";
-
-
+import Topnav from './components/Supplements/Topnav';
+import Supplements from "./components/Supplements/Supplements";
+import EditSupplement from "./components/Supplements/EditSupplement";
+import Orders from './components/Supplements/Orders';
+import EditOrders from './components/Supplements/EditOrders';
 
 export default class App extends Component {
   render() {
@@ -69,16 +68,21 @@ export default class App extends Component {
         <Route path="/supplements" component={Topnav}></Route>
         <Route path="/supplements" component={Supplements}></Route>
         <Route path="/supplements" component={Footer}/>        
-        
-        <Route path="/supplements/addsupplement" component={Header}></Route>
-        <Route path="/supplements/addsupplement" component={Topnav}></Route>
-        <Route path="/supplements/addsupplement" component={AddSupplement}></Route>
-        <Route path="/supplements/addsupplement" component={Footer}/>
 
         <Route path="/editsupplement" component={Header}></Route>
         <Route path="/editsupplement" component={Topnav}></Route>
         <Route path="/editsupplement/:id" component={EditSupplement}></Route>
-        <Route path="/editsupplement" component={Footer}/>  
+        <Route path="/editsupplement" component={Footer}/>        
+
+        <Route path="/orders" component={Header}></Route>
+        <Route path="/orders" component={Topnav}></Route>   
+        <Route path="/orders" component={Orders}></Route> 
+        <Route path="/orders" component={Footer}></Route>
+
+        <Route path="/editorder" component={Header}></Route>
+        <Route path="/editorder" component={Topnav}></Route>   
+        <Route path="/editorder/:id" component={EditOrders}></Route> 
+        <Route path="/editorder" component={Footer}></Route>  
 
 
         {/*Dishma*/}

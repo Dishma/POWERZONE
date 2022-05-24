@@ -18,8 +18,12 @@
   text-decoration: none;
 }
 
-.navb li a:hover:not(.active) {
+.navb li a:hover {
   background-color: rgb(9, 114, 212);
   transform: scale(1.05);
   transition: transform 300ms linear;
+}
+
+.navb li a:hover:active {
+  transform: scale(1.20);
 }

@@ -232,7 +232,7 @@ export default class EditSupplements extends Component {
                   class="btn btn-secondary"
                   style={{ marginTop: "15px" }}
                 >
-                  <i class="bi bi-x-square"></i>&nbsp;Close
+                  <i class="fa-solid fa-xmark"></i>&nbsp;Close
                 </button>
               </a>
             </div>

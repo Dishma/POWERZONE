@@ -259,7 +259,7 @@ export default class Supplements extends Component {
             data-bs-toggle="modal"
             data-bs-target="#addplan"
           >
-            <i class="bi bi-plus-circle"></i>&nbsp;Add New Supplement
+            <i class="fa-solid fa-plus"></i>&nbsp;Add New Supplement
           </button>
           <div
             class="modal fade"

@@ -150,7 +150,7 @@ export default class Supplements extends Component {
 
     const names = `Supplement Name:  ${name} `;
     const prices = `Price:  Rs.${price}.00 `;
-    const weights = `Weight:  ${weight} `;
+    const weights = `Weight:  ${weight} g `;
     const categorys = `Category:  ${category} `;
     const availabilities = `Availability: ${availability} `;
 
@@ -215,7 +215,7 @@ export default class Supplements extends Component {
                   <th scope="row">{index + 1}</th>
                   <td>{supplements.name}</td>
                   <td>Rs.{supplements.price}.00</td>
-                  <td>{supplements.weight}</td>
+                  <td>{supplements.weight} g</td>
                   <td>{supplements.category}</td>
                   <td>{supplements.availability}</td>
                   <td>
@@ -298,15 +298,14 @@ export default class Supplements extends Component {
                     </div>
                     <div className="form-group" style={{ marginBottom: "15px" }}>
                       <label style={{ marginBottom: "5px" }}>Price (Rs.)</label>
-                      <div class="input-group">
+                      <div className="input-group">
                         <input
-                          type="text"
+                          type="number"
                           className="form-control"
                           name="price"
                           placeholder="Enter Price"
                           value={this.state.price}
-                          onChange={this.handleInputChange}
-                        ></input>
+                          onChange={this.handleInputChange}></input>
                         <div class="input-group-append">
                           <span class="input-group-text">.00</span>
                         </div>
@@ -316,19 +315,23 @@ export default class Supplements extends Component {
                       </div>
                     </div>
                     <div className="form-group" style={{ marginBottom: "15px" }}>
-                      <label style={{ marginBottom: "5px" }}>Weight (g) </label>
-                      <input
-                        type="number"
-                        className="form-control"
-                        name="weight"
-                        placeholder="Enter Weight"
-                        value={this.state.weight}
-                        onChange={this.handleInputChange}></input>
-        
+                      <label style={{ marginBottom: "5px" }}>Weight</label>
+                      <div className="input-group">
+                        <input
+                          type="number"
+                          className="form-control"
+                          name="weight"
+                          placeholder="Enter Weight"
+                          value={this.state.weight}
+                          onChange={this.handleInputChange}></input>
+                          <div class="input-group-append">
+                            <span class="input-group-text"> g</span>
+                          </div>
+                      </div>
                       <div style={{ fontSize: 12, color: "red" }}>
                         {this.state.weightError}
                       </div>
-        
+                      </div>
                       <div className="form-group" style={{ marginBottom: "15px" }}>
                       <label style={{ marginBottom: "5px" }}>Category</label>
                         <select
@@ -369,10 +372,10 @@ export default class Supplements extends Component {
                         </select>
                         <div style={{ fontSize: 12, color: "red" }}>
                         {this.state.availabilityError}
-                      </div>
+                        </div>
                         </div>
         
-                    </div>
+                    
                   </form>
                 </div>
                 <div class="modal-footer">

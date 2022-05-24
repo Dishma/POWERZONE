@@ -10,6 +10,7 @@ const memberRoutes = require('./routes/members');
 const workoutplanRoutes = require('./routes/workoutplan');
 const supplementRoutes = require('./routes/supplements');
 const driverRoutes = require('./routes/driver.js');
+const orderRoutes = require('./routes/orders');
 
 //app middleware
 app.use(bodyParser.json());
@@ -20,6 +21,7 @@ app.use(memberRoutes);
 app.use(workoutplanRoutes);
 app.use(supplementRoutes);
 app.use(driverRoutes);
+app.use(orderRoutes);
 
 const PORT = 8000;
 const DB_URL = 'mongodb+srv://bdishma:1234@powerzone.mm5nl.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';

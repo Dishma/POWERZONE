@@ -3,6 +3,7 @@ import axios from "axios";
 import jsPDF from "jspdf";
 import "bootstrap/dist/css/bootstrap.min.css";
 import '../../styles/css/supplements.css';
+import Footer from "../Footer";
 
 export default class Orders extends Component {
   constructor(props) {
@@ -198,264 +199,250 @@ export default class Orders extends Component {
 
   render() {
     return (
-      <div
-          className="ord-container"
-          style={{ marginBottom: "70px", marginTop: "20px" }}
-        >
-          <div className="row">
-            <div className="col-lg-9 mt-2 mb-2">
-              <h4>Orders</h4>
-            </div>
-            <div className="col-lg-3 mt-2 mb-2">
-              <input
-                className="form-control"
-                type="search"
-                placeholder="Search"
-                name="searchQuery"
-                onChange={this.handleSearchArea}
-              ></input>
-            </div>
-          </div>
-          <table className="table table-bordered" style={{ marginTop: "40px"}}>
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Customer Name</th>
-                <th scope="col">Address</th>
-                <th scope="col">Phone</th>
-                <th scope="col">Date of Purchase</th>
-                <th scope="col">Supplement Name</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Price</th>
-                <th scope="col">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {this.state.orders.map((orders, index) => (
-                <tr key={index}>
-                  <th scope="row">{index + 1}</th>
-                  <td>{orders.cName}</td>
-                  <td>{orders.address}</td>
-                  <td>{orders.phone}</td>
-                  <td>{orders.date}</td>
-                  <td>{orders.sName}</td>
-                  <td>{orders.quantity}</td>
-                  <td>Rs.{orders.price}.00</td>
-                  <td>
-                    <a
-                      className="btn btn-outline-warning"
-                      href={`/editorder/${orders._id}`}                  >
-                      <i class="fa-solid fa-pen-to-square"></i>
-                      &nbsp;Edit
-                    </a>
-                    &nbsp;&nbsp;
-                    <button
-                      type="button"
-                      class="btn btn-outline-danger"
-                      onClick={() => this.onDelete(orders._id)}>
-                      <i class="fa-solid fa-trash-can"></i>&nbsp;Delete
-                    </button>
-                    &nbsp;&nbsp;
-                    <button
-                      class="btn btn-outline-info"
-                      onClick={() =>
-                        this.createPDF(
-                          orders.cName,
-                          orders.address,
-                          orders.phone,
-                          orders.date,
-                          orders.sName,
-                          orders.quantity,
-                          orders.price,
-                        )
-                      }
-                    >
-                      <i class="fa-solid fa-file-pdf"></i>&nbsp;Get Report
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-
-          {/* Add New Order */}
-          <button
-            type="button"
-            class="btn btn-dark"
-            data-bs-toggle="modal"
-            data-bs-target="#addplan"
+      <div className="main">
+        <div
+            className="ord-container"
+            style={{ marginBottom: "70px", marginTop: "20px" }}
           >
-            <i class="bi bi-plus-circle"></i>&nbsp;Add New Order
-          </button>
-          <div
-            class="modal fade"
-            id="addplan"
-            tabIndex="-1"
-            aria-labelledby="addplanLabel"
-            aria-hidden="true"
-          >
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="addplanLabel">
-                    Add New Order
-                  </h5>
-                  <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                  ></button>
-                </div>
-                <div class="modal-body">
-                  <form className="needs-validation" noValidate>
-                    
-                    {/* Customer Name */}
-
-          <div className="form-group" style={{ marginBottom: "15px" }}>
-            <label style={{ marginBottom: "5px" }}>Customer Name</label>
+            <div className="row">
+              <div className="col-lg-9 mt-2 mb-2">
+                <h4>Orders</h4>
+              </div>
+              <div className="col-lg-3 mt-2 mb-2">
                 <input
-                  type="text"
                   className="form-control"
-                  name="cName"
-                  placeholder="Enter Customer Name"
-                  value={this.state.cName}
-                  onChange={this.handleInputChange}></input>
-                <div style={{ fontSize: 12, color: "red" }}>
-              {this.state.cNameError}
-            </div>
-          </div>
-
-          {/* Customer Address */}
-
-          <div className="form-group" style={{ marginBottom: "15px" }}>
-            <label style={{ marginBottom: "5px" }}>Address</label>
-              <div class="input-group">
-                <input
-                  type="text"
-                  className="form-control"
-                  name="address"
-                  placeholder="Enter Address"
-                  value={this.state.address}
-                  onChange={this.handleInputChange}></input>                        
-                </div>
-                <div style={{ fontSize: 12, color: "red" }}>
-              {this.state.addressError}
-            </div>
-          </div>
-
-          {/* Customer phone number */}
-
-          <div className="form-group" style={{ marginBottom: "15px" }}>
-            <label style={{ marginBottom: "5px" }}>Phone</label>
-              <input
-                  type="text"
-                  className="form-control"
-                  name="phone"
-                  placeholder="Enter Phone"
-                  value={this.state.phone}
-                  onChange={this.handleInputChange}></input>        
-                <div style={{ fontSize: 12, color: "red" }}>
-                {this.state.phoneError}
+                  type="search"
+                  placeholder="Search"
+                  name="searchQuery"
+                  onChange={this.handleSearchArea}
+                ></input>
               </div>
             </div>
-
-          {/* Date of Purchase */}
-
-          <div className="form-group" style={{ marginBottom: "15px" }}>
-            <label style={{ marginBottom: "5px" }}>Date</label>
-              <input
-                  type="date"
+            <table className="table table-bordered" style={{ marginTop: "40px"}}>
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Customer Name</th>
+                  <th scope="col">Address</th>
+                  <th scope="col">Phone</th>
+                  <th scope="col">Date of Purchase</th>
+                  <th scope="col">Supplement Name</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {this.state.orders.map((orders, index) => (
+                  <tr key={index}>
+                    <th scope="row">{index + 1}</th>
+                    <td>{orders.cName}</td>
+                    <td>{orders.address}</td>
+                    <td>{orders.phone}</td>
+                    <td>{orders.date}</td>
+                    <td>{orders.sName}</td>
+                    <td>{orders.quantity}</td>
+                    <td>Rs.{orders.price}.00</td>
+                    <td>
+                      <a
+                        className="btn btn-warning"
+                        href={`/editorder/${orders._id}`}                  >
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        &nbsp;Edit
+                      </a>
+                      &nbsp;&nbsp;
+                      <button
+                        type="button"
+                        class="btn btn-danger"
+                        onClick={() => this.onDelete(orders._id)}>
+                        <i class="fa-solid fa-trash-can"></i>&nbsp;Delete
+                      </button>
+                      &nbsp;&nbsp;
+                      <button
+                        class="btn btn-info"
+                        onClick={() =>
+                          this.createPDF(
+                            orders.cName,
+                            orders.address,
+                            orders.phone,
+                            orders.date,
+                            orders.sName,
+                            orders.quantity,
+                            orders.price,
+                          )
+                        }
+                      >
+                        <i class="fa-solid fa-file-pdf"></i>&nbsp;Get Report
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            {/* Add New Order */}
+            <button
+              type="button"
+              class="btn btn-dark"
+              data-bs-toggle="modal"
+              data-bs-target="#addplan"
+            >
+               <i class="fa-solid fa-plus"></i>&nbsp;Add New Order
+            </button>
+            <div
+              class="modal fade"
+              id="addplan"
+              tabIndex="-1"
+              aria-labelledby="addplanLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="addplanLabel">
+                      Add New Order
+                    </h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <form className="needs-validation" noValidate>
+        
+                      {/* Customer Name */}
+            <div className="form-group" style={{ marginBottom: "15px" }}>
+              <label style={{ marginBottom: "5px" }}>Customer Name</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="cName"
+                    placeholder="Enter Customer Name"
+                    value={this.state.cName}
+                    onChange={this.handleInputChange}></input>
+                  <div style={{ fontSize: 12, color: "red" }}>
+                {this.state.cNameError}
+              </div>
+            </div>
+            {/* Customer Address */}
+            <div className="form-group" style={{ marginBottom: "15px" }}>
+              <label style={{ marginBottom: "5px" }}>Address</label>
+                <div class="input-group">
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="address"
+                    placeholder="Enter Address"
+                    value={this.state.address}
+                    onChange={this.handleInputChange}></input>
+                  </div>
+                  <div style={{ fontSize: 12, color: "red" }}>
+                {this.state.addressError}
+              </div>
+            </div>
+            {/* Customer phone number */}
+            <div className="form-group" style={{ marginBottom: "15px" }}>
+              <label style={{ marginBottom: "5px" }}>Phone</label>
+                <input
+                    type="text"
+                    className="form-control"
+                    name="phone"
+                    placeholder="Enter Phone"
+                    value={this.state.phone}
+                    onChange={this.handleInputChange}></input>
+                  <div style={{ fontSize: 12, color: "red" }}>
+                  {this.state.phoneError}
+                </div>
+              </div>
+            {/* Date of Purchase */}
+            <div className="form-group" style={{ marginBottom: "15px" }}>
+              <label style={{ marginBottom: "5px" }}>Date</label>
+                <input
+                    type="date"
+                    className="form-control"
+                    name="date"
+                    placeholder=""
+                    value={this.state.date}
+                    onChange={this.handleInputChange}></input>
+                  <div style={{ fontSize: 12, color: "red" }}>
+                {this.state.dateError}
+              </div>
+            </div>
+            {/* Supplement Name */}
+            <div className="form-group" style={{ marginBottom: "15px" }}>
+              <label style={{ marginBottom: "5px" }}>Supplement Name</label>
+                <input
+                  type="text"
                   className="form-control"
-                  name="date"
-                  placeholder=""
-                  value={this.state.date}
+                  name="sName"
+                  placeholder="Enter Supplement Name"
+                  value={this.state.sName}
                   onChange={this.handleInputChange}></input>
                 <div style={{ fontSize: 12, color: "red" }}>
-              {this.state.dateError}
+                {this.state.sNameError}
+              </div>
             </div>
-          </div>
-
-          {/* Supplement Name */}
-
-          <div className="form-group" style={{ marginBottom: "15px" }}>
-            <label style={{ marginBottom: "5px" }}>Supplement Name</label>
-              <input
-                type="text"
-                className="form-control"
-                name="sName"
-                placeholder="Enter Supplement Name"
-                value={this.state.sName}
-                onChange={this.handleInputChange}></input>
-              <div style={{ fontSize: 12, color: "red" }}>
-              {this.state.sNameError}
-            </div>
-          </div>
-
-          {/* Quantity */}
-
-          <div className="form-group" style={{ marginBottom: "15px" }}>
-                <label style={{ marginBottom: "5px" }}>Quantity</label>
+            {/* Quantity */}
+            <div className="form-group" style={{ marginBottom: "15px" }}>
+                  <label style={{ marginBottom: "5px" }}>Quantity</label>
+                  <div className="input-group">
+                    <input
+                      type="number"
+                      className="form-control"
+                      name="quantity"
+                      placeholder="Enter Quantity"
+                      value={this.state.quantity}
+                      onChange={this.handleInputChange}></input>
+                  </div>
+                  <div style={{ fontSize: 12, color: "red" }}>
+                    {this.state.quantityError}
+                  </div>
+                </div>
+            {/* Supplement Price */}
+            <div className="form-group" style={{ marginBottom: "15px" }}>
+              <label style={{ marginBottom: "5px" }}>Price (Rs.)</label>
                 <div className="input-group">
                   <input
                     type="number"
                     className="form-control"
-                    name="quantity"
-                    placeholder="Enter Quantity"
-                    value={this.state.quantity}
-                    onChange={this.handleInputChange}></input>                        
-                </div>
-                <div style={{ fontSize: 12, color: "red" }}>
-                  {this.state.quantityError}
-                </div>
+                    name="price"
+                    placeholder="Enter Price"
+                    value={this.state.price}
+                    onChange={this.handleInputChange}></input>
+                    <div class="input-group-append">
+                    <span class="input-group-text">.00</span>
+                    </div>
+                    </div>
+                  <div style={{ fontSize: 12, color: "red" }}>
+                {this.state.priceError}
               </div>
-
-          {/* Supplement Price */}
-
-          <div className="form-group" style={{ marginBottom: "15px" }}>
-            <label style={{ marginBottom: "5px" }}>Price (Rs.)</label>
-              <div className="input-group">
-                <input
-                  type="number"
-                  className="form-control"
-                  name="price"
-                  placeholder="Enter Price"
-                  value={this.state.price}
-                  onChange={this.handleInputChange}></input>
-                  <div class="input-group-append">
-                  <span class="input-group-text">.00</span>
-                  </div>
-                  </div>
-                <div style={{ fontSize: 12, color: "red" }}>
-              {this.state.priceError}
             </div>
-          </div>
-
-          {/* Buttons */}
-
-          <button
-            className="btn btn-warning"
-              type="submit"
-                style={{ marginTop: "15px" }}
-                onClick={this.onSubmit}>
-            <i class="fa-regular fa-floppy-disk"></i>&nbsp;Save
-          </button>
-          &nbsp;&nbsp;              
-          <a href="/orders">
+            {/* Buttons */}
             <button
-              type="button"
-                class="btn btn-secondary"
-                style={{ marginTop: "15px" }}>
-                <i class="bi bi-x-square"></i>&nbsp;Close
-              </button>
-            </a>
-
-                      
-                  </form>  
+              className="btn btn-warning"
+                type="submit"
+                  style={{ marginTop: "15px" }}
+                  onClick={this.onSubmit}>
+              <i class="fa-regular fa-floppy-disk"></i>&nbsp;Save
+            </button>
+            &nbsp;&nbsp;
+            <a href="/orders">
+              <button
+                type="button"
+                  class="btn btn-secondary"
+                  style={{ marginTop: "15px" }}>
+                  <i class="bi bi-x-square"></i>&nbsp;Close
+                </button>
+              </a>
+        
+                    </form>
+                </div>
               </div>
             </div>
           </div>
         </div>
+        <div className="footer"><Footer/></div>
       </div>                
         
     );

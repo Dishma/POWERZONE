@@ -20,4 +20,6 @@
 
 .navb li a:hover:not(.active) {
   background-color: rgb(9, 114, 212);
+  transform: scale(1.05);
+  transition: transform 300ms linear;
 }

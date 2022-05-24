@@ -130,7 +130,7 @@ export default class EditOrders extends Component {
         <div className="col-md-8 mt-4 mx-auto">
           <center>
             <h1 className="h3 mb-3 font-weight-normal">
-              Edit Supplement Details
+              Edit Order Details
             </h1>
           </center>
 

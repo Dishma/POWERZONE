@@ -44,10 +44,12 @@ export default class App extends Component {
         <Route path="/memberlist" component={Navbar}></Route>
         <Route path="/memberlist" component={MemberList}></Route>
         <Route path="/memberlist" component={Footer}></Route>
+
         <Route path="/editmember" component={Header}></Route>
         <Route path="/editmember" component={Navbar}></Route>
         <Route path="/editmember/:id" component={EditMember}></Route>
         <Route path="/editmember" component={Footer}></Route>
+
         <Route path="/postmember" component={Header}></Route>
         <Route path="/postmember" component={Navbar}></Route>
         <Route path="/postmember/:id" component={PostMember}></Route>
@@ -57,6 +59,7 @@ export default class App extends Component {
         <Route path="/workoutplans" component={Navbar}></Route>
         <Route path="/workoutplans" component={WorkoutPlan}></Route>
         <Route path="/workoutplans" component={Footer}></Route>
+        
         <Route path="/editworkoutplan" component={Header}></Route>
         <Route path="/editworkoutplan" component={Navbar}></Route>
         <Route path="/editworkoutplan/:id" component={EditPlan}></Route>

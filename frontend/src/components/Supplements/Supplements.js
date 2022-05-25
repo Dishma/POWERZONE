@@ -180,6 +180,7 @@ export default class Supplements extends Component {
 
   render() {
     return (
+      <div className="s">
       <div className="main">
         <div
             className="sup-container"
@@ -400,6 +401,7 @@ export default class Supplements extends Component {
             </div>
           </div>
           <div className="footer"><Footer/></div>
+      </div>
       </div>
     );
   }

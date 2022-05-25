@@ -1,5 +1,5 @@
 
-.main{              
+.s.main{              
     background-image: url('../../images/supplement_bg.png');
     
     position:absolute;
@@ -9,7 +9,7 @@
     overflow: hidden;
 }
 
-.sup-container{    
+.s.sup-container{    
     background: linear-gradient(360deg, rgba(255,255,255,0.3) 20%, rgba(255,255,255,0.8) 60%);
     width: 80%;
     height: auto;
@@ -21,14 +21,14 @@
     font-weight: 700;
 }
 
-.footer{
+.s.footer{
     
     position:absolute;
     width: 100%;
     bottom: 0;
 }
 
-.ord-container{
+.s.ord-container{
     background: linear-gradient(360deg, rgba(255,255,255,0.3) 20%, rgba(255,255,255,0.8) 60%);
     width: 100%;
     height: auto;

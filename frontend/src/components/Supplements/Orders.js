@@ -39,19 +39,20 @@ export default class Orders extends Component {
   };
 
   //Search
-  /* filterData(orders, searchKey) {
+  filterData(orders, searchKey) {
     const result = orders.filter(
       (orders) =>
-        orders.name.toUperCase().includes(searchKey) ||
-        orders.price.toUperCase().includes(searchKey) ||
-        orders.weight.toUperCase().includes(searchKey) ||
-        orders.category.toUperCase().includes(searchKey)
+        orders.cName.toLowerCase().includes(searchKey) ||
+        orders.sName.toLowerCase().includes(searchKey) ||
+        orders.cName.toUpperCase().includes(searchKey) ||
+        orders.sName.toUpperCase().includes(searchKey)
+        
     );
 
     this.setState({ orders: result });
-  } */
+  } 
 
- /*  handleSearchArea = (e) => {
+   handleSearchArea = (e) => {
     const searchKey = e.currentTarget.value;
 
     axios.get("/orders").then((res) => {
@@ -59,7 +60,7 @@ export default class Orders extends Component {
         this.filterData(res.data.existingOrders, searchKey);
       }
     });
-  }; */
+  };
 
   handleInputChange = (e) => {
     const { name, value } = e.target;

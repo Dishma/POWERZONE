@@ -39,19 +39,19 @@ export default class Supplements extends Component {
   };
 
   //Search
-  /* filterData(supplements, searchKey) {
+  filterData(supplements, searchKey) {
     const result = supplements.filter(
       (supplements) =>
-        supplements.name.toUperCase().includes(searchKey) ||
-        supplements.price.toUperCase().includes(searchKey) ||
-        supplements.weight.toUperCase().includes(searchKey) ||
-        supplements.category.toUperCase().includes(searchKey)
+        supplements.name.toUpperCase().includes(searchKey) ||
+        supplements.name.toLowerCase().includes(searchKey) ||        
+        supplements.category.toUpperCase().includes(searchKey) ||
+        supplements.category.toLowerCase().includes(searchKey) 
     );
 
     this.setState({ supplements: result });
-  } */
+  } 
 
- /*  handleSearchArea = (e) => {
+   handleSearchArea = (e) => {
     const searchKey = e.currentTarget.value;
 
     axios.get("/supplements").then((res) => {
@@ -59,7 +59,7 @@ export default class Supplements extends Component {
         this.filterData(res.data.existingSupplements, searchKey);
       }
     });
-  }; */
+  };
 
   handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -180,7 +180,6 @@ export default class Supplements extends Component {
 
   render() {
     return (
-      <div className="s">
       <div className="main">
         <div
             className="sup-container"
@@ -401,7 +400,6 @@ export default class Supplements extends Component {
             </div>
           </div>
           <div className="footer"><Footer/></div>
-      </div>
       </div>
     );
   }

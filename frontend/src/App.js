@@ -5,14 +5,13 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Navbar from './components/navbar';
-import Login from './components/Login';
 
-import MemberList from './components/Member List/MemberList';
-import EditMember from './components/Member List/EditMember';
-import PostMember from './components/Member List/PostMember';
+import MemberList from './components/MemberList';
+import EditMember from './components/EditMember';
+import PostMember from './components/PostMember';
 
-import WorkoutPlan from './components/Workout Plan/WorkoutPlan';
-import EditPlan from './components/Workout Plan/EditPlan';
+import WorkoutPlan from './components/WorkoutPlan';
+import EditPlan from './components/EditPlan';
 
 
 //Dishma
@@ -38,7 +37,7 @@ export default class App extends Component {
       <BrowserRouter>
 
         {/*Chamod*/}
-        <Route path="/login" component={Login}></Route>
+        <Route path="/login"></Route>
         
         <Route path="/memberlist" component={Header}></Route>
         <Route path="/memberlist" component={Navbar}></Route>
